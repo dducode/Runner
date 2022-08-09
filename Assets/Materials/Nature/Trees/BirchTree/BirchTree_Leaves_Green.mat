@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BirchTree_Leaves
+  m_Name: BirchTree_Leaves_Green
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -122,8 +122,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.65882355, b: 0, a: 1}
-    - _Color: {r: 1, g: 0.65882355, b: 0, a: 1}
+    - _BaseColor: {r: 0.7224491, g: 0.8301887, b: 0.05873976, a: 1}
+    - _Color: {r: 0.7224491, g: 0.8301887, b: 0.05873976, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
