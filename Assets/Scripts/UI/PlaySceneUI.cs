@@ -7,7 +7,6 @@ public class PlaySceneUI : MonoBehaviour
 {
     [SerializeField] Canvas deathWindow;
     [SerializeField] Canvas pauseWindow;
-    [SerializeField] Button pauseButton;
     [SerializeField] AudioClip tapSound;
     [SerializeField] private TextMeshProUGUI score;
     [SerializeField] private TextMeshProUGUI moneys;
@@ -16,13 +15,11 @@ public class PlaySceneUI : MonoBehaviour
     void OnEnable()
     {
         BroadcastMessages.AddListener(Messages.DEATH, Death);
-        BroadcastMessages.AddListener(Messages.RESTART, Restart);
         BroadcastMessages<bool>.AddListener(Messages.PAUSE, IsPause);
     }
     void OnDisable()
     {
         BroadcastMessages.RemoveListener(Messages.DEATH, Death);
-        BroadcastMessages.RemoveListener(Messages.RESTART, Restart);
         BroadcastMessages<bool>.RemoveListener(Messages.PAUSE, IsPause);
     }
 
@@ -47,18 +44,11 @@ public class PlaySceneUI : MonoBehaviour
     public void Death()
     {
         StartCoroutine(AwaitDeathWindow());
-        pauseButton.enabled = false;
     }
     IEnumerator AwaitDeathWindow()
     {
         yield return new WaitForSecondsRealtime(2);
         deathWindow.enabled = true;
-    }
-
-    public void Restart()
-    {
-        deathWindow.enabled = false;
-        pauseButton.enabled = true;
     }
 
     public void Pause()

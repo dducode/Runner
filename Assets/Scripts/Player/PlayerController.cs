@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour
         {
             playerData.SetScore(playerMovement.playerSpeed);
             animator.SetBool("jumping", !charController.isGrounded);
+            float animationSpeed = Mathf.InverseLerp(
+                playerMovement.minRunSpeed, playerMovement.maxRunSpeed, playerMovement.playerSpeed
+                );
+            animator.speed = 1 + animationSpeed;
         }
     }
 

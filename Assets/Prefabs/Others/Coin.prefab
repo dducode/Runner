@@ -93,6 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4449225452564975279}
   - component: {fileID: 8927486107957705182}
+  - component: {fileID: 3648487896199309343}
+  - component: {fileID: 3080476206720443392}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -107,7 +109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3960074013508850709}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.66555744, y: 0.487, z: 17.71815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -145,6 +147,32 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2486826629688745876}
   m_Enabled: 1
+--- !u!114 &3648487896199309343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960074013508850709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c634c298f4c6dd44f944ea1070782f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleClip: {fileID: 8300000, guid: 215e2fbf80310004c9d7277756e77b04, type: 3}
+--- !u!135 &3080476206720443392
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960074013508850709}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4568628407054876317
 GameObject:
   m_ObjectHideFlags: 0
