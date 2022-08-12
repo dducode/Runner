@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
             manager.StartManager();
         Application.quitting += SaveGameSettings;
         Application.quitting += dataManager.SaveGameData;
-        Application.targetFrameRate = Screen.currentResolution.refreshRate;
+        Application.targetFrameRate = 60;
         LoadScene(1);
     }
 

@@ -47,6 +47,8 @@ MonoBehaviour:
   targets:
   - {fileID: 3140386742692312105}
   - {fileID: 2623984846694253874}
+  - {fileID: 8307407270166253675}
+  - {fileID: 8506792391577904478}
   minWindForce: 0
   maxWindForce: 426
   minWindFrequency: 0.01
@@ -4203,6 +4205,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3960052955167331088}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &8307407270166253675 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5025236306389484411, guid: c3313d3edd24ffa4886a26a1022b4fbe,
+    type: 3}
+  m_PrefabInstance: {fileID: 3960052955167331088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4226752895662270626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4990,6 +4998,12 @@ PrefabInstance:
 --- !u!4 &6182502533936574400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1640359165114346756, guid: 0db49e7c706586e44aa72eb58a602a89,
+    type: 3}
+  m_PrefabInstance: {fileID: 4832099292125561540}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8506792391577904478 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3819371546786441114, guid: 0db49e7c706586e44aa72eb58a602a89,
     type: 3}
   m_PrefabInstance: {fileID: 4832099292125561540}
   m_PrefabAsset: {fileID: 0}
