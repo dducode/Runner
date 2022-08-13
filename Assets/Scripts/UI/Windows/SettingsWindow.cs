@@ -6,7 +6,7 @@ public class SettingsWindow : MonoBehaviour
     [SerializeField] Toggle soundMute;
     [SerializeField] AudioClip tapSound;
 
-    void Start()
+    void Awake()
     {
         GameSettings gameSettings = GameManager.gameManager.gameSettings;
         soundMute.isOn = gameSettings.soundMute;

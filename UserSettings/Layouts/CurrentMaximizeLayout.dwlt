@@ -33,15 +33,16 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dc59854f72ef4a1fb6dbb8d0cd6aea3, type: 3}
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 1090, y: 480}
+  m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Profile Analyzer
-    m_Image: {fileID: 0}
+    m_Text: Game
+    m_Image: {fileID: -6423792434712278376, guid: 0000000000000000d000000000000000,
+      type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
@@ -53,397 +54,72 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  m_DepthSliceUI:
-    m_DepthFilter: -1
-    m_DepthFilter1: -1
-    m_DepthFilter2: -1
-    m_DepthFilterAuto: 1
-    m_MostCommonDepthDiff: 0
-  m_TimingOption: 0
-  m_ParentMarker: 
-  m_ThreadSelection:
-    groups: []
-    selection:
-    - 1:Main Thread
-  m_NameFilter: 
-  m_NameExclude: 
-  m_TopTenDisplay: 0
-  m_NameFilterOperation: 0
-  m_NameExcludeOperation: 1
-  m_ShowFilters: 1
-  m_ShowTopNMarkers: 1
-  m_ShowFrameSummary: 1
-  m_ShowThreadSummary: 0
-  m_ShowMarkerSummary: 1
-  m_ShowMarkerTable: 1
-  m_ProfileSingleView:
-    path: Unsaved 1
-    data:
-      FirstFrameIncomplete: 0
-      LastFrameIncomplete: 0
-    selectedIndices: 3f0f0000400f0000410f0000420f0000430f0000440f0000450f0000460f0000470f0000480f0000490f00004a0f00004b0f00004c0f00004d0f00004e0f00004f0f0000500f0000510f0000520f0000530f0000540f0000550f0000560f0000570f0000580f0000590f00005a0f00005b0f0000
-  m_ProfileLeftView:
-    path: 
-    data:
-      FirstFrameIncomplete: 0
-      LastFrameIncomplete: 0
-    selectedIndices: 0000000000000000
-  m_ProfileRightView:
-    path: 
-    data:
-      FirstFrameIncomplete: 0
-      LastFrameIncomplete: 0
-    selectedIndices: 0000000000000000
-  m_SelectedMarker:
-    id: 0
-    threadName: 
-    threadGroupName: 
-    name: EditorLoop
-  m_Pairings: []
-  m_SelectedPairing: 0
-  m_ProfileTreeViewState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 00000000
-    m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff
-    m_RenameOverlay:
-      m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
-      m_EditFieldRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      m_UserData: 0
-      m_IsWaitingForDelay: 0
-      m_IsRenaming: 0
-      m_OriginalEventType: 11
-      m_IsRenamingFilename: 0
-      m_ClientGUIView: {fileID: 0}
-    m_SearchString: 
-  m_ProfileMulticolumnHeaderState:
-    m_Columns:
-    - width: 300
-      sortedAscending: 1
-      headerContent:
-        m_Text: Marker Name
-        m_Image: {fileID: 0}
-        m_Tooltip: 'Marker Name
-
-
-          Frame marker time is total of all instances
-          in frame'
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 100
-      maxWidth: 1000000
-      autoResize: 0
-      allowToggleVisibility: 0
-      canSort: 1
-      userData: 0
-    - width: 30
-      sortedAscending: 0
-      headerContent:
-        m_Text: Depth
-        m_Image: {fileID: 0}
-        m_Tooltip: 'Marker depth in marker hierarchy
-
-
-          May appear at multiple
-          levels'
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 30
-      sortedAscending: 0
-      headerContent:
-        m_Text: Median
-        m_Image: {fileID: 0}
-        m_Tooltip: 'Central marker time over all selected frames
-
-
-          Always
-          present in data set
-
-          1st of 2 central values for even frame count'
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 30
-      sortedAscending: 0
-      headerContent:
-        m_Text: Median Bar
-        m_Image: {fileID: 0}
-        m_Tooltip: Central marker time over all selected frames
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 30
-      sortedAscending: 0
-      headerContent:
-        m_Text: Mean
-        m_Image: {fileID: 0}
-        m_Tooltip: Per frame marker time / number of non zero frames
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 30
-      sortedAscending: 0
-      headerContent:
-        m_Text: Min
-        m_Image: {fileID: 0}
-        m_Tooltip: Minimum marker time
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 30
-      sortedAscending: 0
-      headerContent:
-        m_Text: Max
-        m_Image: {fileID: 0}
-        m_Tooltip: Maximum marker time
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 30
-      sortedAscending: 0
-      headerContent:
-        m_Text: Range
-        m_Image: {fileID: 0}
-        m_Tooltip: Difference between maximum and minimum
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 30
-      sortedAscending: 0
-      headerContent:
-        m_Text: Count
-        m_Image: {fileID: 0}
-        m_Tooltip: 'Marker count over all selected frames
-
-
-          Multiple can
-          occur per frame'
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 50
-      sortedAscending: 0
-      headerContent:
-        m_Text: Count Bar
-        m_Image: {fileID: 0}
-        m_Tooltip: 'Marker count over all selected frames
-
-
-          Multiple can
-          occur per frame'
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 50
-      sortedAscending: 0
-      headerContent:
-        m_Text: Count Frame
-        m_Image: {fileID: 0}
-        m_Tooltip: 'Average number of markers per frame
-
-
-          total count /
-          number of non zero frames'
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 50
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 70
-      sortedAscending: 0
-      headerContent:
-        m_Text: Count Frame Bar
-        m_Image: {fileID: 0}
-        m_Tooltip: 'Average number of markers per frame
-
-
-          total count /
-          number of non zero frames'
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 50
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 50
-      sortedAscending: 0
-      headerContent:
-        m_Text: 1st
-        m_Image: {fileID: 0}
-        m_Tooltip: First frame index that the marker appears on
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 50
-      sortedAscending: 0
-      headerContent:
-        m_Text: At Median Frame
-        m_Image: {fileID: 0}
-        m_Tooltip: 'Marker time on the median frame
-
-
-          I.e. Marker total
-          duration on the average frame'
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 50
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 50
-      sortedAscending: 0
-      headerContent:
-        m_Text: Total
-        m_Image: {fileID: 0}
-        m_Tooltip: Marker total time over all selected frames
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 50
-      sortedAscending: 0
-      headerContent:
-        m_Text: Total Bar
-        m_Image: {fileID: 0}
-        m_Tooltip: Marker total time over all selected frames
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    - width: 50
-      sortedAscending: 0
-      headerContent:
-        m_Text: Threads
-        m_Image: {fileID: 0}
-        m_Tooltip: Threads the marker occurs on (with filtering applied)
-      contextMenuText: 
-      headerTextAlignment: 0
-      sortingArrowAlignment: 0
-      minWidth: 30
-      maxWidth: 1000000
-      autoResize: 1
-      allowToggleVisibility: 1
-      canSort: 1
-      userData: 0
-    m_VisibleColumns: 0000000001000000020000000300000004000000050000000600000007000000080000000a0000000d000000
-    m_SortedColumns: 02000000
-  m_ComparisonTreeViewState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 
-    m_RenameOverlay:
-      m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
-      m_EditFieldRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      m_UserData: 0
-      m_IsWaitingForDelay: 0
-      m_IsRenaming: 0
-      m_OriginalEventType: 11
-      m_IsRenamingFilename: 0
-      m_ClientGUIView: {fileID: 0}
-    m_SearchString: 
-  m_ComparisonMulticolumnHeaderState:
-    m_Columns: []
-    m_VisibleColumns: 
-    m_SortedColumns: 
-  m_ThreadRange: 1
-  m_TopNBars: 10
+  m_SerializedViewNames:
+  - UnityEditor.DeviceSimulation.SimulatorWindow
+  m_SerializedViewValues:
+  - C:\UnityProjects\Runner\Library\PlayModeViewStates\0fd8ab1d7dfad9940b84e0bd57b5679a
+  m_PlayModeViewName: GameView
+  m_ShowGizmos: 1
+  m_TargetDisplay: 0
+  m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
+  m_TargetSize: {x: 720, y: 1280}
+  m_TextureFilterMode: 0
+  m_TextureHideFlags: 61
+  m_RenderIMGUI: 1
+  m_EnterPlayModeBehavior: 0
+  m_UseMipMap: 0
+  m_VSyncEnabled: 0
+  m_Gizmos: 1
+  m_Stats: 1
+  m_SelectedSizes: 07000000000000000000000003000000000000000000000000000000000000000000000000000000
+  m_ZoomArea:
+    m_HRangeLocked: 0
+    m_VRangeLocked: 0
+    hZoomLockedByDefault: 0
+    vZoomLockedByDefault: 0
+    m_HBaseRangeMin: -360
+    m_HBaseRangeMax: 360
+    m_VBaseRangeMin: -640
+    m_VBaseRangeMax: 640
+    m_HAllowExceedBaseRangeMin: 1
+    m_HAllowExceedBaseRangeMax: 1
+    m_VAllowExceedBaseRangeMin: 1
+    m_VAllowExceedBaseRangeMax: 1
+    m_ScaleWithWindow: 0
+    m_HSlider: 0
+    m_VSlider: 0
+    m_IgnoreScrollWheelUntilClicked: 0
+    m_EnableMouseInput: 1
+    m_EnableSliderZoomHorizontal: 0
+    m_EnableSliderZoomVertical: 0
+    m_UniformScale: 1
+    m_UpDirection: 1
+    m_DrawArea:
+      serializedVersion: 2
+      x: 0
+      y: 21
+      width: 767
+      height: 485
+    m_Scale: {x: 0.37890625, y: 0.37890625}
+    m_Translation: {x: 383.5, y: 242.5}
+    m_MarginLeft: 0
+    m_MarginRight: 0
+    m_MarginTop: 0
+    m_MarginBottom: 0
+    m_LastShownAreaInsideMargins:
+      serializedVersion: 2
+      x: -1012.1237
+      y: -640
+      width: 2024.2474
+      height: 1280
+    m_MinimalGUI: 1
+  m_defaultScale: 0.37890625
+  m_LastWindowPixelSize: {x: 767, y: 506}
+  m_ClearInEditMode: 1
+  m_NoCameraWarning: 1
+  m_LowResolutionForAspectRatios: 01000001000000000000
+  m_XRRenderMode: 0
+  m_RenderTexture: {fileID: 0}
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -504,7 +180,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProfileAnalyzerWindow
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -513,7 +189,7 @@ MonoBehaviour:
     y: 0
     width: 768
     height: 527
-  m_MinSize: {x: 1091, y: 501}
+  m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
@@ -521,10 +197,10 @@ MonoBehaviour:
   - {fileID: 7}
   - {fileID: 8}
   - {fileID: 9}
-  - {fileID: 2}
   - {fileID: 10}
   - {fileID: 11}
-  m_Selected: 4
+  - {fileID: 2}
+  m_Selected: 6
   m_LastSelected: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -637,7 +313,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Camera
@@ -752,9 +428,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 7.726543, y: -1.606321, z: 54.442337}
+    m_Target: {x: 6.8257003, y: 2.8501635, z: 49.11988}
     speed: 2
-    m_Value: {x: 7.726543, y: -1.606321, z: 54.442337}
+    m_Value: {x: 6.8257003, y: 2.8501635, z: 49.11988}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -801,13 +477,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.2988497, y: -0.18814678, z: 0.059451506, w: -0.93474984}
+    m_Target: {x: -0.13922359, y: -0.15432619, z: 0.021282783, w: -0.97793245}
     speed: 2
-    m_Value: {x: -0.29863974, y: -0.1865578, z: 0.058944188, w: -0.9340964}
+    m_Value: {x: -0.1391588, y: -0.15725893, z: 0.021700308, w: -0.9774628}
   m_Size:
-    m_Target: 4.8857284
+    m_Target: 6.5799665
     speed: 2
-    m_Value: 0.8660254
+    m_Value: 6.5799656
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -840,99 +516,6 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Game
-    m_Image: {fileID: -6423792434712278376, guid: 0000000000000000d000000000000000,
-      type: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 0
-    y: 73
-    width: 767
-    height: 506
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
-  m_SerializedViewNames: []
-  m_SerializedViewValues: []
-  m_PlayModeViewName: GameView
-  m_ShowGizmos: 0
-  m_TargetDisplay: 0
-  m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 273, y: 485}
-  m_TextureFilterMode: 0
-  m_TextureHideFlags: 61
-  m_RenderIMGUI: 1
-  m_EnterPlayModeBehavior: 0
-  m_UseMipMap: 0
-  m_VSyncEnabled: 0
-  m_Gizmos: 0
-  m_Stats: 0
-  m_SelectedSizes: 07000000000000000000000005000000000000000000000000000000000000000000000000000000
-  m_ZoomArea:
-    m_HRangeLocked: 0
-    m_VRangeLocked: 0
-    hZoomLockedByDefault: 0
-    vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -136.5
-    m_HBaseRangeMax: 136.5
-    m_VBaseRangeMin: -242.5
-    m_VBaseRangeMax: 242.5
-    m_HAllowExceedBaseRangeMin: 1
-    m_HAllowExceedBaseRangeMax: 1
-    m_VAllowExceedBaseRangeMin: 1
-    m_VAllowExceedBaseRangeMax: 1
-    m_ScaleWithWindow: 0
-    m_HSlider: 0
-    m_VSlider: 0
-    m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
-    m_EnableSliderZoomHorizontal: 0
-    m_EnableSliderZoomVertical: 0
-    m_UniformScale: 1
-    m_UpDirection: 1
-    m_DrawArea:
-      serializedVersion: 2
-      x: 0
-      y: 21
-      width: 767
-      height: 485
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 383.5, y: 242.5}
-    m_MarginLeft: 0
-    m_MarginRight: 0
-    m_MarginTop: 0
-    m_MarginBottom: 0
-    m_LastShownAreaInsideMargins:
-      serializedVersion: 2
-      x: -383.5
-      y: -242.5
-      width: 767
-      height: 485
-    m_MinimalGUI: 1
-  m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 767, y: 506}
-  m_ClearInEditMode: 1
-  m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000001000000000000
-  m_XRRenderMode: 0
-  m_RenderTexture: {fileID: 0}
---- !u!114 &8
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12070, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -957,28 +540,28 @@ MonoBehaviour:
   m_Recording: 1
   m_ActiveNativePlatformSupportModuleName: 
   m_AllModules:
-  - rid: 4883420572606267392
-  - rid: 4883420572606267393
-  - rid: 4883420572606267394
-  - rid: 4883420572606267395
-  - rid: 4883420572606267396
-  - rid: 4883420572606267397
-  - rid: 4883420572606267398
-  - rid: 4883420572606267399
-  - rid: 4883420572606267400
-  - rid: 4883420572606267401
-  - rid: 4883420572606267402
-  - rid: 4883420572606267403
-  - rid: 4883420572606267404
-  - rid: 4883420572606267405
-  - rid: 4883420572606267406
-  - rid: 4883420572606267407
+  - rid: 4921198832707436544
+  - rid: 4921198832707436545
+  - rid: 4921198832707436546
+  - rid: 4921198832707436547
+  - rid: 4921198832707436548
+  - rid: 4921198832707436549
+  - rid: 4921198832707436550
+  - rid: 4921198832707436551
+  - rid: 4921198832707436552
+  - rid: 4921198832707436553
+  - rid: 4921198832707436554
+  - rid: 4921198832707436555
+  - rid: 4921198832707436556
+  - rid: 4921198832707436557
+  - rid: 4921198832707436558
+  - rid: 4921198832707436559
   m_CallstackRecordMode: 1
-  m_ClearOnPlay: 0
+  m_ClearOnPlay: 1
   references:
     version: 2
     RefIds:
-    - rid: 4883420572606267392
+    - rid: 4921198832707436544
       type: {class: CPUProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.CPUProfilerModule, UnityEditor.CoreModule,
@@ -1316,7 +899,7 @@ MonoBehaviour:
           <threadId>k__BackingField: 0
           <threadIndex>k__BackingField: -1
           m_GroupName: 
-    - rid: 4883420572606267393
+    - rid: 4921198832707436545
       type: {class: GPUProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.GPUProfilerModule, UnityEditor.CoreModule,
@@ -1328,7 +911,7 @@ MonoBehaviour:
         m_HierarchyOverruledThreadFromSelection: 0
         m_ProfilerViewFilteringOptions: 1
         m_FrameDataHierarchyView:
-          m_Serialized: 1
+          m_Serialized: 0
           m_TreeViewState:
             scrollPos: {x: 0, y: 0}
             m_SelectedIDs: 
@@ -1352,89 +935,21 @@ MonoBehaviour:
               m_ClientGUIView: {fileID: 0}
             m_SearchString: 
           m_MultiColumnHeaderState:
-            m_Columns:
-            - width: 200
-              sortedAscending: 1
-              headerContent:
-                m_Text: Overview
-                m_Image: {fileID: 0}
-                m_Tooltip: 
-              contextMenuText: 
-              headerTextAlignment: 0
-              sortingArrowAlignment: 2
-              minWidth: 200
-              maxWidth: 1000000
-              autoResize: 1
-              allowToggleVisibility: 0
-              canSort: 1
-              userData: 0
-            - width: 80
-              sortedAscending: 0
-              headerContent:
-                m_Text: Total
-                m_Image: {fileID: 0}
-                m_Tooltip: 
-              contextMenuText: 
-              headerTextAlignment: 0
-              sortingArrowAlignment: 2
-              minWidth: 50
-              maxWidth: 1000000
-              autoResize: 0
-              allowToggleVisibility: 1
-              canSort: 1
-              userData: 0
-            - width: 80
-              sortedAscending: 0
-              headerContent:
-                m_Text: DrawCalls
-                m_Image: {fileID: 0}
-                m_Tooltip: 
-              contextMenuText: 
-              headerTextAlignment: 0
-              sortingArrowAlignment: 2
-              minWidth: 50
-              maxWidth: 1000000
-              autoResize: 0
-              allowToggleVisibility: 1
-              canSort: 1
-              userData: 0
-            - width: 80
-              sortedAscending: 0
-              headerContent:
-                m_Text: GPU ms
-                m_Image: {fileID: 0}
-                m_Tooltip: 
-              contextMenuText: 
-              headerTextAlignment: 0
-              sortingArrowAlignment: 2
-              minWidth: 50
-              maxWidth: 1000000
-              autoResize: 0
-              allowToggleVisibility: 1
-              canSort: 1
-              userData: 0
-            m_VisibleColumns: 00000000010000000200000003000000
-            m_SortedColumns: 03000000
+            m_Columns: []
+            m_VisibleColumns: 
+            m_SortedColumns: 
           m_ThreadIndexInThreadNames: 0
           m_DetailedViewType: 0
           m_DetailedViewSpliterState:
             ID: 0
             splitterInitialOffset: 0
-            currentActiveSplitter: -1
-            realSizes:
-            - 0
-            - 0
-            relativeSizes:
-            - 0.7
-            - 0.3
-            minSizes:
-            - 450
-            - 50
-            maxSizes:
-            - 0
-            - 0
+            currentActiveSplitter: 0
+            realSizes: []
+            relativeSizes: []
+            minSizes: []
+            maxSizes: []
             lastTotalSize: 0
-            splitSize: 6
+            splitSize: 0
             xOffset: 0
             m_Version: 1
             oldRealSizes: 
@@ -1719,16 +1234,16 @@ MonoBehaviour:
                 m_SortedColumns: 03000000
           m_FullThreadName: Main Thread
           m_ThreadName: Main Thread
-          <threadId>k__BackingField: 18446744073167716800
-          <threadIndex>k__BackingField: 0
+          <threadId>k__BackingField: 0
+          <threadIndex>k__BackingField: -1
           m_GroupName: 
-    - rid: 4883420572606267394
+    - rid: 4921198832707436546
       type: {class: RenderingProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.RenderingProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 4883420572606267395
+    - rid: 4921198832707436547
       type: {class: MemoryProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.MemoryProfilerModule, UnityEditor.CoreModule,
@@ -1758,7 +1273,7 @@ MonoBehaviour:
           oldMinSizes: 
           oldMaxSizes: 
           oldSplitSize: 0
-    - rid: 4883420572606267396
+    - rid: 4921198832707436548
       type: {class: AudioProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.AudioProfilerModule, UnityEditor.CoreModule,
@@ -1767,32 +1282,32 @@ MonoBehaviour:
         m_ShowInactiveDSPChains: 0
         m_HighlightAudibleDSPChains: 1
         m_DSPGraphZoomFactor: 1
-    - rid: 4883420572606267397
+    - rid: 4921198832707436549
       type: {class: VideoProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.VideoProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 4883420572606267398
+    - rid: 4921198832707436550
       type: {class: PhysicsProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.PhysicsProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 4883420572606267399
+    - rid: 4921198832707436551
       type: {class: Physics2DProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.Physics2DProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 4883420572606267400
+    - rid: 4921198832707436552
       type: {class: NetworkingMessagesProfilerModule, ns: UnityEditorInternal.Profiling,
         asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.NetworkingMessagesProfilerModule,
           UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 4883420572606267401
+    - rid: 4921198832707436553
       type: {class: NetworkingOperationsProfilerModule, ns: UnityEditorInternal.Profiling,
         asm: UnityEditor.CoreModule}
       data:
@@ -1840,26 +1355,26 @@ MonoBehaviour:
         - ObjectHide
         - CRC
         - ClientAuthority
-    - rid: 4883420572606267402
+    - rid: 4921198832707436554
       type: {class: UIProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.UIProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 4883420572606267403
+    - rid: 4921198832707436555
       type: {class: UIDetailsProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.UIDetailsProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 4883420572606267404
+    - rid: 4921198832707436556
       type: {class: GlobalIlluminationProfilerModule, ns: UnityEditorInternal.Profiling,
         asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.GlobalIlluminationProfilerModule,
           UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 4883420572606267405
+    - rid: 4921198832707436557
       type: {class: VirtualTexturingProfilerModule, ns: UnityEditorInternal.Profiling,
         asm: UnityEditor.CoreModule}
       data:
@@ -1867,25 +1382,997 @@ MonoBehaviour:
           UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
         m_VTProfilerView:
-          rid: 4883420572606267408
-    - rid: 4883420572606267406
+          rid: 4921198832707436560
+    - rid: 4921198832707436558
       type: {class: FileIOProfilerModule, ns: UnityEditorInternal.Profiling, asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.FileIOProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 4883420572606267407
+    - rid: 4921198832707436559
       type: {class: AssetLoadingProfilerModule, ns: UnityEditorInternal.Profiling,
         asm: UnityEditor.CoreModule}
       data:
         m_Identifier: UnityEditorInternal.Profiling.AssetLoadingProfilerModule, UnityEditor.CoreModule,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         m_PaneScroll: {x: 0, y: 0}
-    - rid: 4883420572606267408
+    - rid: 4921198832707436560
       type: {class: VirtualTexturingProfilerView, ns: UnityEditor, asm: UnityEditor.CoreModule}
       data:
         m_SortAscending: 0
         m_SortedColumn: -1
+--- !u!114 &8
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc59854f72ef4a1fb6dbb8d0cd6aea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 1090, y: 480}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Profile Analyzer
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 0
+    y: 73
+    width: 767
+    height: 506
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  m_DepthSliceUI:
+    m_DepthFilter: -1
+    m_DepthFilter1: -1
+    m_DepthFilter2: -1
+    m_DepthFilterAuto: 1
+    m_MostCommonDepthDiff: 0
+  m_TimingOption: 0
+  m_ParentMarker: 
+  m_ThreadSelection:
+    groups: []
+    selection:
+    - 1:Main Thread
+  m_NameFilter: 
+  m_NameExclude: 
+  m_TopTenDisplay: 0
+  m_NameFilterOperation: 0
+  m_NameExcludeOperation: 1
+  m_ShowFilters: 1
+  m_ShowTopNMarkers: 1
+  m_ShowFrameSummary: 1
+  m_ShowThreadSummary: 0
+  m_ShowMarkerSummary: 1
+  m_ShowMarkerTable: 1
+  m_ProfileSingleView:
+    path: 
+    data:
+      FirstFrameIncomplete: 0
+      LastFrameIncomplete: 0
+    selectedIndices: 0000000000000000
+  m_ProfileLeftView:
+    path: 
+    data:
+      FirstFrameIncomplete: 0
+      LastFrameIncomplete: 0
+    selectedIndices: 0000000000000000
+  m_ProfileRightView:
+    path: 
+    data:
+      FirstFrameIncomplete: 0
+      LastFrameIncomplete: 0
+    selectedIndices: 0000000000000000
+  m_SelectedMarker:
+    id: 11
+    threadName: 
+    threadGroupName: 
+    name: 
+  m_Pairings: []
+  m_SelectedPairing: 0
+  m_ProfileTreeViewState:
+    scrollPos: {x: 0, y: 260}
+    m_SelectedIDs: 0b000000
+    m_LastClickedID: 11
+    m_ExpandedIDs: ffffffff
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: 
+      m_OriginalName: 
+      m_EditFieldRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      m_UserData: 0
+      m_IsWaitingForDelay: 0
+      m_IsRenaming: 0
+      m_OriginalEventType: 11
+      m_IsRenamingFilename: 0
+      m_ClientGUIView: {fileID: 0}
+    m_SearchString: 
+  m_ProfileMulticolumnHeaderState:
+    m_Columns:
+    - width: 300
+      sortedAscending: 1
+      headerContent:
+        m_Text: Marker Name
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Marker Name
+
+
+          Frame marker time is total of all instances
+          in frame'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 100
+      maxWidth: 1000000
+      autoResize: 0
+      allowToggleVisibility: 0
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Depth
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Marker depth in marker hierarchy
+
+
+          May appear at multiple
+          levels'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Median
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Central marker time over all selected frames
+
+
+          Always
+          present in data set
+
+          1st of 2 central values for even frame count'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Median Bar
+        m_Image: {fileID: 0}
+        m_Tooltip: Central marker time over all selected frames
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Mean
+        m_Image: {fileID: 0}
+        m_Tooltip: Per frame marker time / number of non zero frames
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Min
+        m_Image: {fileID: 0}
+        m_Tooltip: Minimum marker time
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Max
+        m_Image: {fileID: 0}
+        m_Tooltip: Maximum marker time
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Range
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference between maximum and minimum
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Marker count over all selected frames
+
+
+          Multiple can
+          occur per frame'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Bar
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Marker count over all selected frames
+
+
+          Multiple can
+          occur per frame'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 70
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Frame
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Average number of markers per frame
+
+
+          total count /
+          number of non zero frames'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 50
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 70
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Frame Bar
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Average number of markers per frame
+
+
+          total count /
+          number of non zero frames'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 50
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: 1st
+        m_Image: {fileID: 0}
+        m_Tooltip: First frame index that the marker appears on
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 90
+      sortedAscending: 0
+      headerContent:
+        m_Text: At Median Frame
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Marker time on the median frame
+
+
+          I.e. Marker total
+          duration on the average frame'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 50
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Total
+        m_Image: {fileID: 0}
+        m_Tooltip: Marker total time over all selected frames
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Total Bar
+        m_Image: {fileID: 0}
+        m_Tooltip: Marker total time over all selected frames
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Threads
+        m_Image: {fileID: 0}
+        m_Tooltip: Threads the marker occurs on (with filtering applied)
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    m_VisibleColumns: 0000000001000000020000000300000004000000050000000600000007000000080000000a0000000d000000
+    m_SortedColumns: 02000000
+  m_ComparisonTreeViewState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: 
+      m_OriginalName: 
+      m_EditFieldRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      m_UserData: 0
+      m_IsWaitingForDelay: 0
+      m_IsRenaming: 0
+      m_OriginalEventType: 11
+      m_IsRenamingFilename: 0
+      m_ClientGUIView: {fileID: 0}
+    m_SearchString: 
+  m_ComparisonMulticolumnHeaderState:
+    m_Columns:
+    - width: 300
+      sortedAscending: 1
+      headerContent:
+        m_Text: Marker Name
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Marker Name
+
+
+          Frame marker time is total of all instances
+          in frame'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 100
+      maxWidth: 1000000
+      autoResize: 0
+      allowToggleVisibility: 0
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Left Median
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Left median time
+
+
+          Central marker time over all selected
+          frames'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: <
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference if left data set is a larger value
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: '>'
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference if right data set is a larger value
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Right Median
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Right median time
+
+
+          Central marker time over all selected
+          frames'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Diff
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference between left and right times
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Diff Percent
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference between left and right times as percentage of left
+          marker time
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Abs Diff
+        m_Image: {fileID: 0}
+        m_Tooltip: Absolute difference between left and right times
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Left
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Left marker count over all selected frames
+
+
+          Multiple
+          can occur per frame'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: < Count
+        m_Image: {fileID: 0}
+        m_Tooltip: Count Difference if left data set count is a larger value
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: '> Count'
+        m_Image: {fileID: 0}
+        m_Tooltip: Count Difference if right data set count is a larger value
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Right
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Right marker count over all selected frames
+
+
+          Multiple
+          can occur per frame'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Delta
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference in marker count
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Delta Percent
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference in marker count as percentage of left marker count
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Abs Count
+        m_Image: {fileID: 0}
+        m_Tooltip: Absolute difference in marker count
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Left Frame
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Average number of markers per frame in left data set
+
+
+          total
+          count / number of non zero frames'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: < Frame Count
+        m_Image: {fileID: 0}
+        m_Tooltip: Per frame Count Difference if left data set count is a larger
+          value
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: '> Frame Count'
+        m_Image: {fileID: 0}
+        m_Tooltip: Per frame Count Difference if right data set count is a larger
+          value
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Right Frame
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Average number of markers per frame in right data set
+
+
+          total
+          count / number of non zero frames'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Delta Frame
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference in per frame marker count
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Count Delta Percent Frame
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference in per frame marker count as percentage of left count
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Abs Frame Count
+        m_Image: {fileID: 0}
+        m_Tooltip: Absolute difference in per frame marker count
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Total Left
+        m_Image: {fileID: 0}
+        m_Tooltip: Left marker total time over all selected frames
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: < Total
+        m_Image: {fileID: 0}
+        m_Tooltip: Total Difference if left data set total is a larger value
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: '> Total'
+        m_Image: {fileID: 0}
+        m_Tooltip: Total Difference if right data set total is a larger value
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Total Right
+        m_Image: {fileID: 0}
+        m_Tooltip: Right marker total time over all selected frames
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Total Delta
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference in total time over all selected frames
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Total Delta Percent
+        m_Image: {fileID: 0}
+        m_Tooltip: Difference in total time over all selected frames as percentage
+          of left marker total time
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Abs Total
+        m_Image: {fileID: 0}
+        m_Tooltip: Absolute difference in total time over all selected frames
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Depth Left
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Marker depth in marker hierarchy
+
+
+          May appear at multiple
+          levels'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Depth Right
+        m_Image: {fileID: 0}
+        m_Tooltip: 'Marker depth in marker hierarchy
+
+
+          May appear at multiple
+          levels'
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Depth Diff
+        m_Image: {fileID: 0}
+        m_Tooltip: Absolute difference in min marker depth total over all selected
+          frames
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Threads Left
+        m_Image: {fileID: 0}
+        m_Tooltip: Threads the marker occurs on in left data set (with filtering
+          applied)
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    - width: 50
+      sortedAscending: 0
+      headerContent:
+        m_Text: Threads Right
+        m_Image: {fileID: 0}
+        m_Tooltip: Threads the marker occurs on in right data set (with filtering
+          applied)
+      contextMenuText: 
+      headerTextAlignment: 0
+      sortingArrowAlignment: 0
+      minWidth: 30
+      maxWidth: 1000000
+      autoResize: 1
+      allowToggleVisibility: 1
+      canSort: 1
+      userData: 0
+    m_VisibleColumns: 00000000010000000200000003000000040000000500000007000000080000000b0000000c000000
+    m_SortedColumns: 07000000
+  m_ThreadRange: 1
+  m_TopNBars: 10
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1921,7 +2408,7 @@ MonoBehaviour:
   m_SplitterFlex: 0.2
   m_SearchText: 
   m_TreeViewState:
-    scrollPos: {x: 0, y: 0}
+    scrollPos: {x: 0, y: 14}
     m_SelectedIDs: d7dddea2
     m_LastClickedID: -1562452521
     m_ExpandedIDs: a01a5fa653336be200000000c53aba5a
@@ -2077,8 +2564,8 @@ MonoBehaviour:
     y: 527
     width: 768
     height: 100
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -2106,7 +2593,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 546
+    y: 600
     width: 767
     height: 79
   m_ViewDataDictionary: {fileID: 0}
@@ -2137,7 +2624,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 1552
+  controlID: 21
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -2157,8 +2644,8 @@ MonoBehaviour:
     y: 0
     width: 270
     height: 280
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -2196,23 +2683,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 9c020000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 74affdffe6bffeffaac2feff62c3feff80c3feff88c3feffcac5feffacc7feff92cafeffd2cafeffeccafefff0cafeff2ecdfefffcebfeffe4f0feffe8f0feffecf0feffeef0feffd4f2feff14f3feff2ef3feff32f3feff70f5feff66f6feffaaf6feffe6f6feff0cf7feff6cf9feff5afbfeff9afbfeffb4fbfeffb8fbfefff6fdfeff14fffeff58fffeff4c01ffff7401ffffd403ffff5a14ffffc618ffff2021ffff4a25ffff5846ffff9ef5ffff02fbfffff4ffffff
+      m_ExpandedIDs: fefaffff02fbffff08fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: MapleTree_2
-        m_OriginalName: MapleTree_2
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -70800
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 15}
       m_SearchString: 
@@ -2290,7 +2777,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/URP
+    - Assets/Models/Nature
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -2304,7 +2791,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b48a0000
     m_LastClickedID: 35508
-    m_ExpandedIDs: ffffffff00000000ae630000b0630000b2630000b4630000b6630000b8630000ba630000bc630000be630000c0630000c2630000c4630000c6630000c8630000ca630000cc630000d0630000d2630000166400001864000090a10000
+    m_ExpandedIDs: 00000000947b0000967b0000987b00009a7b00009c7b00009e7b0000a07b0000a27b0000a47b0000a67b0000a87b0000aa7b0000ac7b0000ae7b0000b07b0000b27b0000b47b0000b67b0000b87b0000ba7b0000bc7b0000be7b0000c07b0000c27b0000c47b0000c67b0000c87b0000ca7b0000cc7b0000ce7b0000d07b0000d27b0000d47b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2329,24 +2816,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 616}
-    m_SelectedIDs: 9c020000
-    m_LastClickedID: 668
-    m_ExpandedIDs: ffffffff00000000ae630000b0630000b2630000b4630000b6630000b8630000ba630000bc630000be630000c0630000c2630000c4630000c6630000c8630000ca630000cc630000d0630000d26300001064000016640000186400002e6400008ea1000090a10000
+    scrollPos: {x: 0, y: 468}
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: ffffffff00000000947b0000967b0000987b00009a7b00009c7b00009e7b0000a07b0000a27b0000a47b0000a67b0000a87b0000aa7b0000ac7b0000ae7b0000b07b0000b27b0000b47b0000b67b0000b87b0000ba7b0000bc7b0000be7b0000c07b0000c27b0000c47b0000c67b0000c87b0000ca7b0000cc7b0000ce7b0000d07b0000d27b0000d47b0000307c000002970000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Box
-      m_OriginalName: Box
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 26394
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 17}
     m_SearchString: 
@@ -2357,8 +2844,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 9c020000
-    m_LastClickedInstanceID: 668
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
