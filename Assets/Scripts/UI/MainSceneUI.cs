@@ -10,7 +10,7 @@ public class MainSceneUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI moneys;
     [SerializeField] AudioClip tapSound;
 
-    void Awake()
+    public void StartUI()
     {
         buyHealthWindow.enabled = false;
     }

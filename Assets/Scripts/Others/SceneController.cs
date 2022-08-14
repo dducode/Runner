@@ -7,6 +7,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] string endPointName;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject[] levelsPrefab = new GameObject[3];
+    [SerializeField] string musicClip;
     public GameObject player { get; private set; }
     private List<GameObject> spawnedLevels = new List<GameObject>();
     public List<GameObject> levels { get { return spawnedLevels; } }

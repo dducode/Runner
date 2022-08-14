@@ -23,7 +23,7 @@ public class PlaySceneUI : MonoBehaviour
         BroadcastMessages<bool>.RemoveListener(Messages.PAUSE, IsPause);
     }
 
-    void Awake()
+    public void StartUI()
     {
         pauseWindow.enabled = false;
         deathWindow.enabled = false;

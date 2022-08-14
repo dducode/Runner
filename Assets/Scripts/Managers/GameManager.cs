@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     {
         //загружаем настройки пользователя
         int savedSoundMute, savedMusicMute;
-        if (PlayerPrefs.HasKey("SoundMute") || PlayerPrefs.HasKey("MusicMute"))
+        if (PlayerPrefs.HasKey("SoundMute") && PlayerPrefs.HasKey("MusicMute"))
         {
             savedSoundMute = PlayerPrefs.GetInt("SoundMute");
             savedMusicMute = PlayerPrefs.GetInt("MusicMute");

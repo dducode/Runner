@@ -54,7 +54,7 @@ public class DataManager : MonoBehaviour, IManagers
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/SaveGameData.dat", FileMode.Open);
-            SavedData data = (SavedData)bf.Deserialize(file);
+            SavedData data = bf.Deserialize(file) as SavedData;
             file.Close();
 
             string jsonForLoad = data.savedJson;

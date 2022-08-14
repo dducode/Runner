@@ -22,6 +22,10 @@ public class UIManager : MonoBehaviour, IManagers
         playSceneUI.enabled = false;
         settingsWindow.enabled = false;
         loadWindow.enabled = false;
+
+        mainSceneUI.gameObject.GetComponent<MainSceneUI>().StartUI();
+        playSceneUI.gameObject.GetComponent<PlaySceneUI>().StartUI();
+        settingsWindow.gameObject.GetComponent<SettingsWindow>().StartUI();
     }
 
     public void ActiveUI(int index)

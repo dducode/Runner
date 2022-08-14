@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 710135377}
   - component: {fileID: 710135378}
   m_Layer: 0
-  m_Name: SceneController
+  m_Name: Scene controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -291,6 +291,7 @@ MonoBehaviour:
   - {fileID: 903621840985160789, guid: 7a19210cc980ea849843f28eb596e9a2, type: 3}
   - {fileID: 903621840985160789, guid: 6ce870edd4324f74c911af03821080ee, type: 3}
   - {fileID: 903621840985160789, guid: 81e4a7cf3d59dc642b0e41f0eeab2820, type: 3}
+  musicClip: level_music
 --- !u!1 &814495820
 GameObject:
   m_ObjectHideFlags: 0
