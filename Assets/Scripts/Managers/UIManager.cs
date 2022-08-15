@@ -17,22 +17,24 @@ public class UIManager : MonoBehaviour, IManagers
 
     public void StartManager()
     {
-        DontDestroyOnLoad(gameObject);
-        mainSceneUI.enabled = false;
-        playSceneUI.enabled = false;
-        settingsWindow.enabled = false;
-        loadWindow.enabled = false;
+        List<Canvas> UIs = new List<Canvas>();
+        UIs.Add(mainSceneUI);
+        UIs.Add(playSceneUI);
+        UIs.Add(loadWindow);
+        UIs.Add(settingsWindow);
 
-        mainSceneUI.gameObject.GetComponent<MainSceneUI>().StartUI();
-        playSceneUI.gameObject.GetComponent<PlaySceneUI>().StartUI();
-        settingsWindow.gameObject.GetComponent<SettingsWindow>().StartUI();
+        foreach (Canvas ui in UIs)
+        {
+            ui.gameObject.GetComponent<IUserInterface>()?.StartUI();
+            ui.enabled = false;
+        }
     }
 
     public void ActiveUI(int index)
     {
         buildIndex = index;
         loadWindow.enabled = false;
-        mainSceneUI.enabled = buildIndex == 1;
+        mainSceneUI.enabled = buildIndex is 1;
         playSceneUI.enabled = buildIndex > 1;
     }
 

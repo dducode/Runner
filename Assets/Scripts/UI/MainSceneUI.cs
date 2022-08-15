@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 
-public class MainSceneUI : MonoBehaviour
+public class MainSceneUI : MonoBehaviour, IUserInterface
 {
     [SerializeField] Canvas buyHealthWindow;
     [SerializeField] TextMeshProUGUI health;

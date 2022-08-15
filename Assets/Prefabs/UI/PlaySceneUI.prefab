@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae891679ae1610448727c1523696dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tapSound: {fileID: 8300000, guid: 69a04458a263f9e478fc5c12025b37b2, type: 3}
+  tapSound: {fileID: 8300000, guid: 18396a842a9d44043b6126bab2e7fd1d, type: 3}
   restartButton: {fileID: 3658076905038220434}
   mainMenuButton: {fileID: 3658076904606866473}
   health: {fileID: 8551883689193901832}

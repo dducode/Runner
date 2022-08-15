@@ -1,11 +1,12 @@
+using System;
+[Serializable]
 public struct GameSettings
 {
+    public enum Quality
+    {
+        Low, Medium, High
+    }
     public bool soundMute;
     public bool musicMute;
-
-    GameSettings(bool _soundMute = false, bool _musicMute = true)
-    {
-        soundMute = _soundMute;
-        musicMute = _musicMute;
-    }
+    public Quality quality;
 }

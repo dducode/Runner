@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlaySceneUI : MonoBehaviour
+public class PlaySceneUI : MonoBehaviour, IUserInterface
 {
     [SerializeField] Canvas deathWindow;
     [SerializeField] Canvas pauseWindow;

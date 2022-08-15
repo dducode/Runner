@@ -47,17 +47,23 @@ public class PlayerData : MonoBehaviour
     public void CollectItem(string tag)
     {
         EncodedData encodedData = GameManager.dataManager.GetGameData();
-        if (tag == "Money")
+        if (tag is "Money")
             encodedData.money = encodedData.money + moneyMultiplier;
-        else if (tag == "Multiplier")
+        else if (tag is "Multiplier")
         {
             int probability = UnityEngine.Random.Range(0, 100);
-            if (probability > 95)
-                encodedData.multiplierBonus = 5;
-            else if (probability > 75)
-                encodedData.multiplierBonus = 3;
-            else
-                encodedData.multiplierBonus = 2;
+            switch (probability)
+            {
+                case > 95:
+                    encodedData.multiplierBonus = 5;
+                    break;
+                case > 75:
+                    encodedData.multiplierBonus = 3;
+                    break;
+                default:
+                    encodedData.multiplierBonus = 2;
+                    break;
+            }
             timer.AddListener(10f, ResetMultiplier);
         }
         GameManager.dataManager.SetGameData(encodedData);

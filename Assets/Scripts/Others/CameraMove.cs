@@ -16,7 +16,7 @@ public class CameraMove : MonoBehaviour
 
     void LateUpdate()
     {
-        if (player != null)
+        if (player is not null)
         {
             move.z = player.transform.position.z + startPos.z;
             move.x = Mathf.Lerp(move.x, player.transform.position.x / 2, 0.25f);
@@ -27,7 +27,7 @@ public class CameraMove : MonoBehaviour
         else
         {
             player = GameObject.FindWithTag("Player");
-            if (player != null)
+            if (player is not null)
                 playerChar = player.GetComponent<CharacterController>();
         }
     }

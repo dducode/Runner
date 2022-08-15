@@ -9,7 +9,6 @@ public class DataManager : MonoBehaviour, IManagers
 
     public void StartManager()
     {
-        DontDestroyOnLoad(gameObject);
         LoadGameData();
     }
 
@@ -74,6 +73,7 @@ public class DataManager : MonoBehaviour, IManagers
             jsonData = B64X.Encode(jsonData);
         }
     }
+#if UNITY_EDITOR
     public void ResetData()
     {
         // удаляем игровые данные
@@ -88,4 +88,5 @@ public class DataManager : MonoBehaviour, IManagers
         else
             Debug.LogError("Сохранённые данные отсутствуют");
     }
+#endif
 }

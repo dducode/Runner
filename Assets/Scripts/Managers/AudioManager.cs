@@ -3,15 +3,12 @@
 public class AudioManager : MonoBehaviour, IManagers
 {
     GameSettings gameSettings;
-    AudioSource soundSource;
-    AudioSource musicSource;
+    [SerializeField] AudioSource soundSource;
+    [SerializeField] AudioSource musicSource;
     [SerializeField] string startMusic;
 
     public void StartManager()
     {
-        DontDestroyOnLoad(gameObject);
-        soundSource = gameObject.AddComponent<AudioSource>();
-        musicSource = gameObject.AddComponent<AudioSource>();
         gameSettings = GameManager.gameManager.gameSettings;
         PlayMusic(Resources.Load("Musics/" + startMusic) as AudioClip);
     }
@@ -23,9 +20,9 @@ public class AudioManager : MonoBehaviour, IManagers
             soundSource.PlayOneShot(clip);
     }
 
-    public void PlayMusic(AudioClip clip = null)
+    public void PlayMusic(AudioClip clip = default)
     {
-        if (clip != null)
+        if (clip is not default(AudioClip))
             musicSource.clip = clip;
         gameSettings = GameManager.gameManager.gameSettings;
         if (!gameSettings.musicMute)

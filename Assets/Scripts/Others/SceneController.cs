@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour
 
     private void Update()
     {
-        if (player != null)
+        if (player is not null)
         {
             GameObject lastChunk = spawnedLevels[spawnedLevels.Count - 1];
             int end = FindPointIndex(lastChunk, endPointName);
@@ -74,7 +74,7 @@ public class SceneController : MonoBehaviour
                 break;
             for (int i = 0; i < chunk.transform.childCount; i++)
             {
-                if (chunk.transform.GetChild(i).tag == "Dynamic")
+                if (chunk.transform.GetChild(i).tag is "Dynamic")
                     Destroy(chunk.transform.GetChild(i).gameObject);
             }
         }

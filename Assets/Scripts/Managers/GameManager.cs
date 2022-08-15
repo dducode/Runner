@@ -3,9 +3,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(AudioManager))]
-[RequireComponent(typeof(DataManager))]
-[RequireComponent(typeof(UIManager))]
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager { get; private set; }
@@ -14,7 +11,9 @@ public class GameManager : MonoBehaviour
     public static UIManager uiManager { get; private set; }
     List<IManagers> managers;
 
+    [SerializeField] GameSettings defaultSettings;
     public GameSettings gameSettings { get; private set; }
+    public GameSettings DefaultSettings { get { return defaultSettings; } }   
 
     AsyncOperation async;
     Scene scene;
@@ -24,9 +23,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         LoadGameSettings();
         gameManager = this;
-        audioManager = GetComponent<AudioManager>();
-        dataManager = GetComponent<DataManager>();
-        uiManager = GetComponent<UIManager>();
+        audioManager = GetComponentInChildren<AudioManager>();
+        dataManager = GetComponentInChildren<DataManager>();
+        uiManager = GetComponentInChildren<UIManager>();
         managers = new List<IManagers>();
         managers.Add(audioManager);
         managers.Add(dataManager);
@@ -42,7 +41,18 @@ public class GameManager : MonoBehaviour
     void OnEnable() => BroadcastMessages<bool>.AddListener(Messages.PAUSE, IsPause);
     void OnDisable() => BroadcastMessages<bool>.RemoveListener(Messages.PAUSE, IsPause);
 
-    public void SetGameSettings(GameSettings _gameSettings) => gameSettings = _gameSettings;
+    public void SetGameSettings(GameSettings _gameSettings)
+    {
+        gameSettings = _gameSettings;
+        QualitySettings.SetQualityLevel((int)gameSettings.quality);
+        audioManager.PlayMusic();
+    }
+    public void ResetGameSettings()
+    {
+        gameSettings = defaultSettings;
+        QualitySettings.SetQualityLevel((int)gameSettings.quality);
+        audioManager.PlayMusic();
+    }
 
     public void LoadScene(int scene)
     {
@@ -78,28 +88,30 @@ public class GameManager : MonoBehaviour
         // сохраняем настройки пользователя
         int savedSoundMute = gameSettings.soundMute ? 1 : 0;
         int savedMusicMute = gameSettings.musicMute ? 1 : 0;
+        int savedQuality = (int)gameSettings.quality;
 
         PlayerPrefs.SetInt("SoundMute", savedSoundMute);
         PlayerPrefs.SetInt("MusicMute", savedMusicMute);
+        PlayerPrefs.SetInt("Quality", savedQuality);
         PlayerPrefs.Save();
     }
     void LoadGameSettings()
     {
         //загружаем настройки пользователя
         int savedSoundMute, savedMusicMute;
+        GameSettings.Quality quality;
         if (PlayerPrefs.HasKey("SoundMute") && PlayerPrefs.HasKey("MusicMute"))
         {
             savedSoundMute = PlayerPrefs.GetInt("SoundMute");
             savedMusicMute = PlayerPrefs.GetInt("MusicMute");
+            quality = (GameSettings.Quality)PlayerPrefs.GetInt("Quality");
             GameSettings _gameSettings;
-            _gameSettings.soundMute = savedSoundMute == 1;
-            _gameSettings.musicMute = savedMusicMute == 1;
+            _gameSettings.soundMute = savedSoundMute is 1;
+            _gameSettings.musicMute = savedMusicMute is 1;
+            _gameSettings.quality = quality;
             gameSettings = _gameSettings;
         }
         else
-        {
-            GameSettings _gameSettings = new GameSettings();
-            gameSettings = _gameSettings;
-        }
+            gameSettings = defaultSettings;
     }
 }

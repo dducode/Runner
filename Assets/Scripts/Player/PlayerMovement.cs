@@ -43,15 +43,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Began)
+            if (touch.phase is TouchPhase.Began)
                 startPos = touch.position;
-            else if (touch.phase == TouchPhase.Moved)
+            else if (touch.phase is TouchPhase.Moved)
             {
                 nextPos = touch.position;
                 movedVector = nextPos - startPos;
                 MotionVector();
             }
-            else if (touch.phase == TouchPhase.Ended)
+            else if (touch.phase is TouchPhase.Ended)
                 endTouch = true;
         }
 #endif
@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void PlayerRebound()
     {
-        if ((_charController.collisionFlags & CollisionFlags.Sides) != 0)
+        if ((_charController.collisionFlags & CollisionFlags.Sides) is not 0)
         {
             Vector3 start = transform.position;
             start.y += 0.25f;
