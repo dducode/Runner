@@ -49,6 +49,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.tag is "Barriers")
+            BroadcastMessages.SendMessage(Messages.DEATH);
+    }
+
     public void Death()
     {
         animator.SetBool("death", true);

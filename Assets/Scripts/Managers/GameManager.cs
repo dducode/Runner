@@ -41,17 +41,17 @@ public class GameManager : MonoBehaviour
     void OnEnable() => BroadcastMessages<bool>.AddListener(Messages.PAUSE, IsPause);
     void OnDisable() => BroadcastMessages<bool>.RemoveListener(Messages.PAUSE, IsPause);
 
-    public void SetGameSettings(GameSettings _gameSettings)
+    public void SetSettings(GameSettings _gameSettings)
     {
         gameSettings = _gameSettings;
         QualitySettings.SetQualityLevel((int)gameSettings.quality);
-        audioManager.PlayMusic();
+        audioManager.SetSettings(gameSettings);
     }
-    public void ResetGameSettings()
+    public void ResetSettings()
     {
         gameSettings = defaultSettings;
         QualitySettings.SetQualityLevel((int)gameSettings.quality);
-        audioManager.PlayMusic();
+        audioManager.SetSettings(gameSettings);
     }
 
     public void LoadScene(int scene)

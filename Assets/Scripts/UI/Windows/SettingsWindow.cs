@@ -48,7 +48,7 @@ public class SettingsWindow : MonoBehaviour, IUserInterface
         GameSettings gameSettings = GameManager.gameManager.gameSettings;
         gameSettings.soundMute = soundMute.isOn;
         gameSettings.musicMute = musicMute.isOn;
-        GameManager.gameManager.SetGameSettings(gameSettings);
+        GameManager.gameManager.SetSettings(gameSettings);
         GameManager.audioManager.PlaySound(tapSound);
         resetSettings.interactable = !gameSettings.Equals(GameManager.gameManager.DefaultSettings);
     }
@@ -57,14 +57,14 @@ public class SettingsWindow : MonoBehaviour, IUserInterface
     {
         GameSettings gameSettings = GameManager.gameManager.gameSettings;
         gameSettings.quality = (GameSettings.Quality)value;
-        GameManager.gameManager.SetGameSettings(gameSettings);
+        GameManager.gameManager.SetSettings(gameSettings);
         resetSettings.interactable = !gameSettings.Equals(GameManager.gameManager.DefaultSettings);
     }
 
     public void ResetSettings()
     {
         GameManager.audioManager.PlaySound(tapSound);
-        GameManager.gameManager.ResetGameSettings();
+        GameManager.gameManager.ResetSettings();
         soundMute.onValueChanged.RemoveAllListeners();
         musicMute.onValueChanged.RemoveAllListeners();
         GameSettings gameSettings = GameManager.gameManager.gameSettings;
@@ -72,7 +72,7 @@ public class SettingsWindow : MonoBehaviour, IUserInterface
         musicMute.isOn = gameSettings.musicMute;
         quality.value = (float)gameSettings.quality;
         soundMute.onValueChanged.AddListener(delegate { SetMuteSettings(); });
-        musicMute.onValueChanged.AddListener(delegate { SetMuteSettings(); GameManager.audioManager.PlayMusic(); });
+        musicMute.onValueChanged.AddListener(delegate { SetMuteSettings(); });
         resetSettings.interactable = false;
     }
 }

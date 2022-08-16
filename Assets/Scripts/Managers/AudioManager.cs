@@ -2,32 +2,29 @@
 
 public class AudioManager : MonoBehaviour, IManagers
 {
-    GameSettings gameSettings;
     [SerializeField] AudioSource soundSource;
     [SerializeField] AudioSource musicSource;
     [SerializeField] string startMusic;
 
     public void StartManager()
     {
-        gameSettings = GameManager.gameManager.gameSettings;
+        GameSettings gameSettings = GameManager.gameManager.gameSettings;
+        soundSource.mute = gameSettings.soundMute;
+        musicSource.mute = gameSettings.musicMute;
         PlayMusic(Resources.Load("Musics/" + startMusic) as AudioClip);
     }
 
-    public void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip) => soundSource.PlayOneShot(clip);
+
+    public void PlayMusic(AudioClip clip)
     {
-        gameSettings = GameManager.gameManager.gameSettings;
-        if (!gameSettings.soundMute)
-            soundSource.PlayOneShot(clip);
+        musicSource.clip = clip;
+        musicSource.Play();
     }
 
-    public void PlayMusic(AudioClip clip = default)
+    public void SetSettings(GameSettings _gameSettigs)
     {
-        if (clip is not default(AudioClip))
-            musicSource.clip = clip;
-        gameSettings = GameManager.gameManager.gameSettings;
-        if (!gameSettings.musicMute)
-            musicSource.Play();
-        else
-            musicSource.Stop();
+        soundSource.mute = _gameSettigs.soundMute;
+        musicSource.mute = _gameSettigs.musicMute;
     }
 }

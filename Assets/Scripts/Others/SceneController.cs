@@ -34,7 +34,7 @@ public class SceneController : MonoBehaviour
         {
             GameObject lastChunk = spawnedLevels[spawnedLevels.Count - 1];
             int end = FindPointIndex(lastChunk, endPointName);
-            if (player.transform.position.z > lastChunk.transform.GetChild(end).position.z - 200f)
+            if (player.transform.position.z > lastChunk.transform.GetChild(end).position.z - 500f)
                 SpawnChunk();
         }
     }
@@ -59,7 +59,7 @@ public class SceneController : MonoBehaviour
             newChunk.transform.GetChild(begin).localPosition;
         spawnedLevels.Add(newChunk);
 
-        if (spawnedLevels.Count > 3)
+        if (spawnedLevels.Count > 5)
         {
             Destroy(spawnedLevels[0].gameObject);
             spawnedLevels.RemoveAt(0);
