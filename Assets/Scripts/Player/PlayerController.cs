@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.collider.tag is "Barriers")
+        if (charController.collisionFlags is CollisionFlags.Sides)
             BroadcastMessages.SendMessage(Messages.DEATH);
     }
 

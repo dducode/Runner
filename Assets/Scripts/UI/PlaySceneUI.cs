@@ -7,6 +7,7 @@ public class PlaySceneUI : MonoBehaviour, IUserInterface
 {
     [SerializeField] Canvas deathWindow;
     [SerializeField] Canvas pauseWindow;
+    [SerializeField] Button pauseButton;
     [SerializeField] AudioClip tapSound;
     [SerializeField] private TextMeshProUGUI score;
     [SerializeField] private TextMeshProUGUI moneys;
@@ -56,5 +57,9 @@ public class PlaySceneUI : MonoBehaviour, IUserInterface
         GameManager.audioManager.PlaySound(tapSound);
         BroadcastMessages<bool>.SendMessage(Messages.PAUSE, true);
     }
-    public void IsPause(bool isPause) => pauseWindow.enabled = isPause;
+    public void IsPause(bool isPause)
+    {
+        pauseWindow.enabled = isPause;
+        pauseButton.interactable = !isPause;
+    }
 }

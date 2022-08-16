@@ -10,6 +10,7 @@ public class DeathWindow : MonoBehaviour
     [SerializeField] GameObject mainMenuButton;
     [SerializeField] TextMeshProUGUI health;
     Canvas canvas;
+    Vector3 startPos;
 
     void OnEnable() => BroadcastMessages.AddListener(Messages.DEATH, Death);
     void OnDisable() => BroadcastMessages.RemoveListener(Messages.DEATH, Death);
@@ -24,6 +25,7 @@ public class DeathWindow : MonoBehaviour
         }
         else
         {
+            mainMenuButton.transform.position = startPos;
             restartButton.SetActive(true);
             health.text = encodedData.revivalCost.ToString();
         }
@@ -32,6 +34,7 @@ public class DeathWindow : MonoBehaviour
     void Start()
     {
         canvas = GetComponent<Canvas>();
+        startPos = mainMenuButton.transform.position;
     }
 
     public void Restart()

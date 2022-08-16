@@ -13,12 +13,17 @@ public class PauseWindow : MonoBehaviour
     void OnEnable() => BroadcastMessages<bool>.AddListener(Messages.PAUSE, IsPause);
     void OnDisable() => BroadcastMessages<bool>.RemoveListener(Messages.PAUSE, IsPause);
 
-    void IsPause(bool isPause) => pauseWindow.enabled = isPause;
+    void IsPause(bool isPause)
+    {
+        pauseWindow.enabled = isPause;
+        startGame.enabled = !isPause;
+    }
 
     public void GoOn()
     {
         GameManager.audioManager.PlaySound(tapSound);
         pauseWindow.enabled = false;
+        startGame.enabled = true;
         time = 3;
         StartCoroutine(StartTimer());
     }

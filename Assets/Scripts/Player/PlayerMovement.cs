@@ -79,8 +79,6 @@ public class PlayerMovement : MonoBehaviour
         move = transform.TransformDirection(move);
         _charController.Move(move * Time.deltaTime);
 
-        PlayerRebound();
-
         runSpeed += Time.deltaTime / 60;
         runSpeed = Mathf.Clamp(runSpeed, minRunSpeed, maxRunSpeed);
 
@@ -115,27 +113,6 @@ public class PlayerMovement : MonoBehaviour
                     GameManager.audioManager.PlaySound(moveSound);
                     endTouch = false;
                 }
-            }
-        }
-    }
-    private void PlayerRebound()
-    {
-        if ((_charController.collisionFlags & CollisionFlags.Sides) is not 0)
-        {
-            Vector3 start = transform.position;
-            start.y += 0.25f;
-
-            if (wasBump)
-                BroadcastMessages.SendMessage(Messages.DEATH);
-            else if (Physics.Raycast(start, Vector3.right, out hit, 0.5f))
-            {
-                movedX = hit.transform.position.x - 2;
-                StartCoroutine(SetBoolWasBump());
-            }
-            else if (Physics.Raycast(start, Vector3.left, out hit, 0.5f))
-            {
-                movedX = hit.transform.position.x + 2;
-                StartCoroutine(SetBoolWasBump());
             }
         }
     }
