@@ -6,7 +6,7 @@ public struct GameSettings
     {
         Low, Medium, High
     }
-    public bool soundMute;
-    public bool musicMute;
+    public bool sound;
+    public bool music;
     public Quality quality;
 }

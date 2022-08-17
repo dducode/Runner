@@ -47,12 +47,6 @@ public class GameManager : MonoBehaviour
         QualitySettings.SetQualityLevel((int)gameSettings.quality);
         audioManager.SetSettings(gameSettings);
     }
-    public void ResetSettings()
-    {
-        gameSettings = defaultSettings;
-        QualitySettings.SetQualityLevel((int)gameSettings.quality);
-        audioManager.SetSettings(gameSettings);
-    }
 
     public void LoadScene(int scene)
     {
@@ -86,28 +80,28 @@ public class GameManager : MonoBehaviour
     void SaveGameSettings()
     {
         // сохраняем настройки пользователя
-        int savedSoundMute = gameSettings.soundMute ? 1 : 0;
-        int savedMusicMute = gameSettings.musicMute ? 1 : 0;
+        int savedSound = gameSettings.sound ? 1 : 0;
+        int savedMusic = gameSettings.music ? 1 : 0;
         int savedQuality = (int)gameSettings.quality;
 
-        PlayerPrefs.SetInt("SoundMute", savedSoundMute);
-        PlayerPrefs.SetInt("MusicMute", savedMusicMute);
+        PlayerPrefs.SetInt("Sound", savedSound);
+        PlayerPrefs.SetInt("Music", savedMusic);
         PlayerPrefs.SetInt("Quality", savedQuality);
         PlayerPrefs.Save();
     }
     void LoadGameSettings()
     {
         //загружаем настройки пользователя
-        int savedSoundMute, savedMusicMute;
+        int savedSound, savedMusic;
         GameSettings.Quality quality;
-        if (PlayerPrefs.HasKey("SoundMute") && PlayerPrefs.HasKey("MusicMute"))
+        if (PlayerPrefs.HasKey("Sound") && PlayerPrefs.HasKey("Music"))
         {
-            savedSoundMute = PlayerPrefs.GetInt("SoundMute");
-            savedMusicMute = PlayerPrefs.GetInt("MusicMute");
+            savedSound = PlayerPrefs.GetInt("Sound");
+            savedMusic = PlayerPrefs.GetInt("Music");
             quality = (GameSettings.Quality)PlayerPrefs.GetInt("Quality");
             GameSettings _gameSettings;
-            _gameSettings.soundMute = savedSoundMute is 1;
-            _gameSettings.musicMute = savedMusicMute is 1;
+            _gameSettings.sound = savedSound is 1;
+            _gameSettings.music = savedMusic is 1;
             _gameSettings.quality = quality;
             gameSettings = _gameSettings;
         }

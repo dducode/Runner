@@ -51,13 +51,14 @@ public class PlayerController : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (charController.collisionFlags is CollisionFlags.Sides)
+        if (charController.collisionFlags is CollisionFlags.Sides && hit.transform.tag is "Barriers")
             BroadcastMessages.SendMessage(Messages.DEATH);
     }
 
     public void Death()
     {
         animator.SetBool("death", true);
+        animator.SetBool("jumping", false);
         playerMovementBehaviour.enabled = false;
     }
     public void Restart()

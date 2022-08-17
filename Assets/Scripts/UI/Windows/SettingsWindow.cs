@@ -3,22 +3,20 @@ using UnityEngine.UI;
 
 public class SettingsWindow : MonoBehaviour, IUserInterface
 {
-    [SerializeField] Toggle soundMute;
-    [SerializeField] Toggle musicMute;
+    [SerializeField] Toggle sound;
+    [SerializeField] Toggle music;
     [SerializeField] Slider quality;
-    [SerializeField] Button resetSettings;
     [SerializeField] Button resetData;
     [SerializeField] AudioClip tapSound;
 
     public void StartUI()
     {
         GameSettings gameSettings = GameManager.gameManager.gameSettings;
-        soundMute.isOn = gameSettings.soundMute;
-        musicMute.isOn = gameSettings.musicMute;
+        sound.isOn = gameSettings.sound;
+        music.isOn = gameSettings.music;
         quality.value = (float)gameSettings.quality;
-        soundMute.onValueChanged.AddListener(delegate { SetMuteSettings(); });
-        musicMute.onValueChanged.AddListener(delegate { SetMuteSettings(); });
-        resetSettings.interactable = !gameSettings.Equals(GameManager.gameManager.DefaultSettings);
+        sound.onValueChanged.AddListener(delegate { SetMuteSettings(); });
+        music.onValueChanged.AddListener(delegate { SetMuteSettings(); });
 #if UNITY_EDITOR
         resetData.onClick.AddListener(ResetData);
 #else
@@ -28,8 +26,8 @@ public class SettingsWindow : MonoBehaviour, IUserInterface
 
     void OnDestroy()
     {
-        soundMute.onValueChanged.RemoveAllListeners();
-        musicMute.onValueChanged.RemoveAllListeners();
+        sound.onValueChanged.RemoveAllListeners();
+        music.onValueChanged.RemoveAllListeners();
 #if UNITY_EDITOR
         resetData.onClick.RemoveAllListeners();
 #endif
@@ -46,11 +44,10 @@ public class SettingsWindow : MonoBehaviour, IUserInterface
     void SetMuteSettings()
     {
         GameSettings gameSettings = GameManager.gameManager.gameSettings;
-        gameSettings.soundMute = soundMute.isOn;
-        gameSettings.musicMute = musicMute.isOn;
+        gameSettings.sound = sound.isOn;
+        gameSettings.music = music.isOn;
         GameManager.gameManager.SetSettings(gameSettings);
         GameManager.audioManager.PlaySound(tapSound);
-        resetSettings.interactable = !gameSettings.Equals(GameManager.gameManager.DefaultSettings);
     }
 
     public void SetQualitySettings(float value)
@@ -58,21 +55,5 @@ public class SettingsWindow : MonoBehaviour, IUserInterface
         GameSettings gameSettings = GameManager.gameManager.gameSettings;
         gameSettings.quality = (GameSettings.Quality)value;
         GameManager.gameManager.SetSettings(gameSettings);
-        resetSettings.interactable = !gameSettings.Equals(GameManager.gameManager.DefaultSettings);
-    }
-
-    public void ResetSettings()
-    {
-        GameManager.audioManager.PlaySound(tapSound);
-        GameManager.gameManager.ResetSettings();
-        soundMute.onValueChanged.RemoveAllListeners();
-        musicMute.onValueChanged.RemoveAllListeners();
-        GameSettings gameSettings = GameManager.gameManager.gameSettings;
-        soundMute.isOn = gameSettings.soundMute;
-        musicMute.isOn = gameSettings.musicMute;
-        quality.value = (float)gameSettings.quality;
-        soundMute.onValueChanged.AddListener(delegate { SetMuteSettings(); });
-        musicMute.onValueChanged.AddListener(delegate { SetMuteSettings(); });
-        resetSettings.interactable = false;
     }
 }

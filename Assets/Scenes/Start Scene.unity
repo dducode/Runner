@@ -320,8 +320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultSettings:
-    soundMute: 0
-    musicMute: 1
+    sound: 1
+    music: 0
     quality: 1
 --- !u!1 &831972502
 GameObject:

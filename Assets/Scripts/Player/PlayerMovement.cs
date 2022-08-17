@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioClip jumpSound;
 
     private bool endTouch;
-    private bool wasBump;
 
     private Vector3 startPos;
     private Vector3 nextPos;
@@ -115,13 +114,5 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-    }
-
-    public IEnumerator SetBoolWasBump()
-    {
-        yield return new WaitForSeconds(0.1f);
-        wasBump = true;
-        yield return new WaitForSeconds(3);
-        wasBump = false;
     }
 }

@@ -9,8 +9,8 @@ public class AudioManager : MonoBehaviour, IManagers
     public void StartManager()
     {
         GameSettings gameSettings = GameManager.gameManager.gameSettings;
-        soundSource.mute = gameSettings.soundMute;
-        musicSource.mute = gameSettings.musicMute;
+        soundSource.mute = !gameSettings.sound;
+        musicSource.mute = !gameSettings.music;
         PlayMusic(Resources.Load("Musics/" + startMusic) as AudioClip);
     }
 
@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour, IManagers
 
     public void SetSettings(GameSettings _gameSettigs)
     {
-        soundSource.mute = _gameSettigs.soundMute;
-        musicSource.mute = _gameSettigs.musicMute;
+        soundSource.mute = !_gameSettigs.sound;
+        musicSource.mute = !_gameSettigs.music;
     }
 }
