@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameSettings defaultSettings;
     public GameSettings gameSettings { get; private set; }
-    public GameSettings DefaultSettings { get { return defaultSettings; } }   
+    public GameSettings DefaultSettings { get { return defaultSettings; } }
+    float[][] screenResolution;
 
     AsyncOperation async;
     Scene scene;
@@ -22,6 +23,11 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         LoadGameSettings();
+        screenResolution = new float[][] {
+            new float[] { Screen.currentResolution.width * 0.6f, Screen.currentResolution.height * 0.6f },
+            new float[] { Screen.currentResolution.width * 0.8f, Screen.currentResolution.height * 0.8f },
+            new float[] { Screen.currentResolution.width * 1f, Screen.currentResolution.height * 1f },
+        };
         gameManager = this;
         audioManager = GetComponentInChildren<AudioManager>();
         dataManager = GetComponentInChildren<DataManager>();
@@ -35,6 +41,10 @@ public class GameManager : MonoBehaviour
         Application.quitting += SaveGameSettings;
         Application.quitting += dataManager.SaveGameData;
         Application.targetFrameRate = Screen.currentResolution.refreshRate;
+        QualitySettings.SetQualityLevel((int)gameSettings.quality);
+        Screen.SetResolution(
+            (int)screenResolution[(int)gameSettings.quality][0],
+            (int)screenResolution[(int)gameSettings.quality][1], true);
         LoadScene(1);
     }
 
@@ -45,6 +55,11 @@ public class GameManager : MonoBehaviour
     {
         gameSettings = _gameSettings;
         QualitySettings.SetQualityLevel((int)gameSettings.quality);
+        int width = (int)screenResolution[(int)gameSettings.quality][0];
+        int height = (int)screenResolution[(int)gameSettings.quality][1];
+        Screen.SetResolution(
+            (int)screenResolution[(int)gameSettings.quality][0],
+            (int)screenResolution[(int)gameSettings.quality][1], true);
         audioManager.SetSettings(gameSettings);
     }
 

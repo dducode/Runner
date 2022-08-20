@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4267202485225454421}
   - component: {fileID: 907472681271162096}
   - component: {fileID: 3130858061143015482}
-  - component: {fileID: 8125438063975548960}
+  - component: {fileID: 8045094104345681999}
   m_Layer: 0
   m_Name: Traffic barrel
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8125438063975548960
-MeshCollider:
+--- !u!65 &8045094104345681999
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7250294698050227742, guid: de69f0924a29f864291d2752f2c726d5, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.58948207, z: 0.3}
+  m_Center: {x: 0, y: 0.29474097, z: 0}
