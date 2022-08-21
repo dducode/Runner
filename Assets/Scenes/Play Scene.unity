@@ -289,9 +289,9 @@ MonoBehaviour:
   playerPrefab: {fileID: 1893769056011736, guid: eea16ef0f58854448aaa9db9257bc84b,
     type: 3}
   levelsPrefab:
-  - {fileID: 903621840985160789, guid: 7a19210cc980ea849843f28eb596e9a2, type: 3}
-  - {fileID: 903621840985160789, guid: 6ce870edd4324f74c911af03821080ee, type: 3}
-  - {fileID: 903621840985160789, guid: 81e4a7cf3d59dc642b0e41f0eeab2820, type: 3}
+  - {fileID: 7726043682893192173, guid: 60b9981bbf5a40b438cd7419fe12c221, type: 3}
+  - {fileID: 2288751647896007107, guid: b7099f31539ba4942b19dac684362acb, type: 3}
+  - {fileID: 1024655564023139242, guid: fb77b47dc3cdd8f49a2f3467fd487c67, type: 3}
   musicClip: level_music
 --- !u!1 &814495820
 GameObject:
