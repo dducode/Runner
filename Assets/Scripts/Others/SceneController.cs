@@ -15,28 +15,20 @@ public class SceneController : MonoBehaviour
     private void Start()
     {
         BroadcastMessages.AddListener(Messages.RESTART, DestroyChilds);
+        BroadcastMessages.AddListener(Messages.SPAWN_CHUNK, SpawnChunk);
         BroadcastMessages<bool>.AddListener(Messages.PAUSE, IsPause);
         player = Instantiate(playerPrefab);
 
         GameObject firstChunk = Instantiate(levelsPrefab[Random.Range(0, levelsPrefab.Length)]);
         spawnedLevels.Add(firstChunk);
+        SpawnChunk();
     }
 
     private void OnDestroy()
     {
         BroadcastMessages.RemoveListener(Messages.RESTART, DestroyChilds);
+        BroadcastMessages.RemoveListener(Messages.SPAWN_CHUNK, SpawnChunk);
         BroadcastMessages<bool>.RemoveListener(Messages.PAUSE, IsPause);
-    }
-
-    private void Update()
-    {
-        if (player is not null)
-        {
-            GameObject lastChunk = spawnedLevels[spawnedLevels.Count - 1];
-            int end = FindPointIndex(lastChunk, endPointName);
-            if (player.transform.position.z > lastChunk.transform.GetChild(end).position.z - 500f)
-                SpawnChunk();
-        }
     }
 
     int FindPointIndex(GameObject chunk, string pointName)
@@ -59,7 +51,7 @@ public class SceneController : MonoBehaviour
             newChunk.transform.GetChild(begin).localPosition;
         spawnedLevels.Add(newChunk);
 
-        if (spawnedLevels.Count > 5)
+        if (spawnedLevels.Count > 3)
         {
             Destroy(spawnedLevels[0].gameObject);
             spawnedLevels.RemoveAt(0);

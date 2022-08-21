@@ -7,6 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 472989645312211341, guid: 2ce3291a442035043a339ef22c1f7481,
+        type: 3}
+      propertyPath: bonusValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550431682836622463, guid: 2ce3291a442035043a339ef22c1f7481,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c8956c23e56795d42b5ed369d1b39fa9, type: 2}
     - target: {fileID: 4600045006442369598, guid: 2ce3291a442035043a339ef22c1f7481,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -70,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 6501118080655689249, guid: 2ce3291a442035043a339ef22c1f7481,
         type: 3}
       propertyPath: m_Name
-      value: SilverBox
+      value: Star_x3
       objectReference: {fileID: 0}
     - target: {fileID: 7768863510365436210, guid: 2ce3291a442035043a339ef22c1f7481,
         type: 3}

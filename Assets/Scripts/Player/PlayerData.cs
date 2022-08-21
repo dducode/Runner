@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(PlayerController))]
 public class PlayerData : MonoBehaviour
 {
     int revivalCostLast; // хранит предыдущее значение стоимости рестарта
@@ -16,12 +17,12 @@ public class PlayerData : MonoBehaviour
     void OnEnable()
     {
         BroadcastMessages.AddListener(Messages.RESTART, Restart);
-        BroadcastMessages<string>.AddListener(Messages.COLLECT, CollectItem);
+        BroadcastMessages<BonusType, int>.AddListener(Messages.COLLECT, CollectBonus);
     }
     void OnDisable()
     {
         BroadcastMessages.RemoveListener(Messages.RESTART, Restart);
-        BroadcastMessages<string>.RemoveListener(Messages.COLLECT, CollectItem);
+        BroadcastMessages<BonusType, int>.RemoveListener(Messages.COLLECT, CollectBonus);
         SetGameData();
     }
     
@@ -44,26 +45,14 @@ public class PlayerData : MonoBehaviour
         GameManager.dataManager.SetGameData(encodedData);
     }
 
-    public void CollectItem(string tag)
+    public void CollectBonus(BonusType bonusType, int bonusValue)
     {
         EncodedData encodedData = GameManager.dataManager.GetGameData();
-        if (tag is "Money")
-            encodedData.money = encodedData.money + moneyMultiplier;
-        else if (tag is "Multiplier")
+        if (bonusType is BonusType.Coin)
+            encodedData.money = encodedData.money + bonusValue * moneyMultiplier;
+        else if (bonusType is BonusType.Multiplier)
         {
-            int probability = UnityEngine.Random.Range(0, 100);
-            switch (probability)
-            {
-                case > 95:
-                    encodedData.multiplierBonus = 5;
-                    break;
-                case > 75:
-                    encodedData.multiplierBonus = 3;
-                    break;
-                default:
-                    encodedData.multiplierBonus = 2;
-                    break;
-            }
+            encodedData.multiplierBonus = bonusValue;
             timer.AddListener(10f, ResetMultiplier);
         }
         GameManager.dataManager.SetGameData(encodedData);

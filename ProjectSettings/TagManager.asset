@@ -11,6 +11,7 @@ TagManager:
   - Environment
   - Static
   - Dynamic
+  - SpawnTrigger
   layers:
   - Default
   - TransparentFX

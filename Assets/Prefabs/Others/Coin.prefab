@@ -160,6 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleClip: {fileID: 8300000, guid: 215e2fbf80310004c9d7277756e77b04, type: 3}
+  bonusType: 1
+  bonusValue: 1
 --- !u!135 &3080476206720443392
 SphereCollider:
   m_ObjectHideFlags: 0

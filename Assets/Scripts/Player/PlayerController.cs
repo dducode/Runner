@@ -51,8 +51,14 @@ public class PlayerController : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.collider.tag is "Barriers")
+        if ((charController.collisionFlags & CollisionFlags.Sides) is not 0 && hit.collider.tag is "Barriers")
             BroadcastMessages.SendMessage(Messages.DEATH);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag is "SpawnTrigger")
+            BroadcastMessages.SendMessage(Messages.SPAWN_CHUNK);
     }
 
     public void Death()

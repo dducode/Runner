@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(PlayerController))]
 public class PlayerMovement : MonoBehaviour
 { 
     public float jumpSpeed = 15.0f;
