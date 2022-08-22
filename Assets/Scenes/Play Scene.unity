@@ -97,8 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 5279d005067ebba43be1ad13e75fe709,
-    type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 9483a6fa0b144c248a76ad34f8f0429d,
     type: 2}
 --- !u!196 &4
@@ -155,7 +154,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.8
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -200,7 +199,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6e-44, y: 4e-45, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 10, z: 8, w: -11}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -284,15 +283,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9247e0dde0352241ad8c1be6e6c0b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playMusic: goin_back
   beginPointName: Begin
   endPointName: End
   playerPrefab: {fileID: 1893769056011736, guid: eea16ef0f58854448aaa9db9257bc84b,
     type: 3}
-  levelsPrefab:
+  ChunksPrefab:
   - {fileID: 7726043682893192173, guid: 60b9981bbf5a40b438cd7419fe12c221, type: 3}
   - {fileID: 2288751647896007107, guid: b7099f31539ba4942b19dac684362acb, type: 3}
   - {fileID: 1024655564023139242, guid: fb77b47dc3cdd8f49a2f3467fd487c67, type: 3}
-  musicClip: level_music
 --- !u!1 &814495820
 GameObject:
   m_ObjectHideFlags: 0

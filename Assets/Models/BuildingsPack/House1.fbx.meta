@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 2a24fca488946ab4383f363cc8de49f9
+guid: 317c9ebd67d11ce4e91dffaea3d0d249
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Brown
-    second: {fileID: 2100000, guid: a41835a5d5b538a47bc149af0b0dad93, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: DarkGrey
-    second: {fileID: 2100000, guid: 0581dcb87c1396748bc610ade7f210ce, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Grey
-    second: {fileID: 2100000, guid: 5ab7e57224cd6b14f884bb29e0dc32fb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: White
-    second: {fileID: 2100000, guid: d8c06631ddb8a11499027058c335f364, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -17,12 +17,10 @@ public class PlayerData : MonoBehaviour
     void OnEnable()
     {
         BroadcastMessages.AddListener(Messages.RESTART, Restart);
-        BroadcastMessages<BonusType, int>.AddListener(Messages.COLLECT, CollectBonus);
     }
     void OnDisable()
     {
         BroadcastMessages.RemoveListener(Messages.RESTART, Restart);
-        BroadcastMessages<BonusType, int>.RemoveListener(Messages.COLLECT, CollectBonus);
         SetGameData();
     }
     
@@ -43,6 +41,16 @@ public class PlayerData : MonoBehaviour
         encodedData.score += playerSpeed * Time.deltaTime * 10f * encodedData.multiplierBonus;
         int score = (int)encodedData.score;
         GameManager.dataManager.SetGameData(encodedData);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Collectible>())
+        {
+            BonusType bonusType = other.GetComponent<Collectible>().BonusType;
+            int bonusValue = other.GetComponent<Collectible>().BonusValue;
+            CollectBonus(bonusType, bonusValue);
+        }
     }
 
     public void CollectBonus(BonusType bonusType, int bonusValue)

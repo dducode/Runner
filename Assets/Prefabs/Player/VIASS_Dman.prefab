@@ -929,6 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae951ba4c9c87d54684ceb714389e7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 0ca97566460a3354abe1f90ac278f3fc, type: 3}
 --- !u!114 &1239884429144938471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,8 +947,8 @@ MonoBehaviour:
   minRunSpeed: 7.5
   maxRunSpeed: 25
   gravity: -9.8
-  moveSound: {fileID: 8300000, guid: 94941eb08e975c64699177a782f874bc, type: 3}
-  jumpSound: {fileID: 8300000, guid: 79ff5364f51ad624d97f3750d365f19d, type: 3}
+  moveSound: {fileID: 8300000, guid: cec58c30485aed44292a8248f40c09fa, type: 3}
+  jumpSound: {fileID: 8300000, guid: cec58c30485aed44292a8248f40c09fa, type: 3}
 --- !u!114 &7220557908150723076
 MonoBehaviour:
   m_ObjectHideFlags: 0

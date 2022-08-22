@@ -8,6 +8,7 @@ using UnityEngine;
 [AddComponentMenu("Player/Player controller")]
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] AudioClip deathSound;
     Behaviour playerMovementBehaviour;
     PlayerMovement playerMovement;
     PlayerData playerData;
@@ -51,13 +52,16 @@ public class PlayerController : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if ((charController.collisionFlags & CollisionFlags.Sides) is not 0 && hit.collider.tag is "Barriers")
+        if ((charController.collisionFlags & CollisionFlags.Sides) is not 0 && hit.collider.CompareTag("Barriers"))
+        {
             BroadcastMessages.SendMessage(Messages.DEATH);
+            GameManager.audioManager.PlaySound(deathSound);
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag is "SpawnTrigger")
+        if (other.CompareTag("SpawnTrigger"))
             BroadcastMessages.SendMessage(Messages.SPAWN_CHUNK);
     }
 
