@@ -21,6 +21,7 @@ public class PlayScene : SceneController
         GameObject firstChunk = Instantiate(ChunksPrefab[Random.Range(0, ChunksPrefab.Length)]);
         spawnedChunks.Add(firstChunk);
         SpawnChunk();
+
         GameManager.audioManager.PlayMusic(Resources.Load("Music/" + playMusic) as AudioClip);
     }
 

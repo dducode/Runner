@@ -6,8 +6,7 @@ using TMPro;
 public class DeathWindow : MonoBehaviour
 {
     [SerializeField] AudioClip tapSound;
-    [SerializeField] GameObject restartButton;
-    [SerializeField] GameObject mainMenuButton;
+    [SerializeField] Button restartButton;
     [SerializeField] TextMeshProUGUI health;
     Canvas canvas;
     Vector3 startPos;
@@ -18,23 +17,13 @@ public class DeathWindow : MonoBehaviour
     void Death()
     {
         EncodedData encodedData = GameManager.dataManager.GetGameData();
-        if (encodedData.health < encodedData.revivalCost)
-        {
-            mainMenuButton.transform.position = restartButton.transform.position;
-            restartButton.SetActive(false);
-        }
-        else
-        {
-            mainMenuButton.transform.position = startPos;
-            restartButton.SetActive(true);
-            health.text = encodedData.revivalCost.ToString();
-        }
+        restartButton.interactable = encodedData.health > encodedData.revivalCost;
+        health.text = encodedData.revivalCost.ToString();
     }
 
     void Start()
     {
         canvas = GetComponent<Canvas>();
-        startPos = mainMenuButton.transform.position;
     }
 
     public void Restart()

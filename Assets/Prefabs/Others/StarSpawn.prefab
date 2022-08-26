@@ -47,7 +47,7 @@ MonoBehaviour:
   bronzeStar:
     prefab: {fileID: 1502655747864268673, guid: 3096e74d0d8fdde4cb0221fb306adc3f,
       type: 3}
-    chance: 50
+    chance: 100
   silverStar:
     prefab: {fileID: 51498637179922128, guid: 896aaabb25d72ad4e99a109bce74c438, type: 3}
     chance: 10

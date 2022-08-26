@@ -9,10 +9,12 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
     [SerializeField] TextMeshProUGUI bestScore;
     [SerializeField] TextMeshProUGUI moneys;
     [SerializeField] AudioClip tapSound;
+    Canvas mainWindow;
 
     public void StartUI()
     {
         buyHealthWindow.enabled = false;
+        mainWindow = GetComponent<Canvas>();
     }
 
     void Update()
@@ -33,12 +35,15 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
     {
         GameManager.audioManager.PlaySound(tapSound);
         buyHealthWindow.enabled = true;
+        mainWindow.enabled = false;
     }
     public void Close()
     {
         GameManager.audioManager.PlaySound(tapSound);
         buyHealthWindow.enabled = false;
+        mainWindow.enabled = true;
     }
+    public void OpenSettings() => GameManager.uiManager.OpenSettings(mainWindow);
 
     public void HealthAdd(int value)
     {

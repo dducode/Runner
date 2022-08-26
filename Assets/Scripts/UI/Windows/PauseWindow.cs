@@ -43,4 +43,5 @@ public class PauseWindow : MonoBehaviour
         BroadcastMessages<bool>.SendMessage(Messages.PAUSE, false);
         GameManager.gameManager.LoadScene(1);
     }
+    public void OpenSettings() => GameManager.uiManager.OpenSettings(pauseWindow);
 }

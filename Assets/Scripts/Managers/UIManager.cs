@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour, IManagers
     [SerializeField] Slider loadBar;
     [SerializeField] AudioClip tapSound;
     int buildIndex;
+    Canvas otherWindow;
 
     public void StartManager()
     {
@@ -38,10 +39,17 @@ public class UIManager : MonoBehaviour, IManagers
         playSceneUI.enabled = buildIndex > 1;
     }
 
+    public void OpenSettings(Canvas _otherWindow)
+    {
+        otherWindow = _otherWindow;
+        OpenSettings(true);
+    }
+
     public void OpenSettings(bool isOpen)
     {
         GameManager.audioManager.PlaySound(tapSound);
         settingsWindow.enabled = isOpen;
+        otherWindow.enabled = !isOpen;
     }
 
     public void LoadScene(float progress)

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 705507994}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -249,6 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 710135377}
   - component: {fileID: 710135378}
+  - component: {fileID: 710135379}
   m_Layer: 0
   m_Name: Scene controller
   m_TagString: Untagged
@@ -292,6 +293,19 @@ MonoBehaviour:
   - {fileID: 7726043682893192173, guid: 60b9981bbf5a40b438cd7419fe12c221, type: 3}
   - {fileID: 2288751647896007107, guid: b7099f31539ba4942b19dac684362acb, type: 3}
   - {fileID: 1024655564023139242, guid: fb77b47dc3cdd8f49a2f3467fd487c67, type: 3}
+--- !u!65 &710135379
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710135376}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 10}
+  m_Center: {x: 0, y: 5, z: 100}
 --- !u!1 &814495820
 GameObject:
   m_ObjectHideFlags: 0

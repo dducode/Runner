@@ -16,11 +16,13 @@ public class PlaySceneUI : MonoBehaviour, IUserInterface
     void OnEnable()
     {
         BroadcastMessages.AddListener(Messages.DEATH, Death);
+        BroadcastMessages.AddListener(Messages.RESTART, Restart);
         BroadcastMessages<bool>.AddListener(Messages.PAUSE, IsPause);
     }
     void OnDisable()
     {
         BroadcastMessages.RemoveListener(Messages.DEATH, Death);
+        BroadcastMessages.RemoveListener(Messages.RESTART, Restart);
         BroadcastMessages<bool>.RemoveListener(Messages.PAUSE, IsPause);
     }
 
@@ -45,7 +47,10 @@ public class PlaySceneUI : MonoBehaviour, IUserInterface
     public void Death()
     {
         StartCoroutine(AwaitDeathWindow());
+        pauseButton.interactable = false;
     }
+    void Restart() => pauseButton.interactable = true;
+
     IEnumerator AwaitDeathWindow()
     {
         yield return new WaitForSecondsRealtime(2);

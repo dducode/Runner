@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
             float animationSpeed = Mathf.InverseLerp(
                 playerMovement.minRunSpeed, playerMovement.maxRunSpeed, playerMovement.playerSpeed
                 );
+            animationSpeed *= 0.5f;
             animator.speed = 1 + animationSpeed;
         }
     }
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("death", true);
         animator.SetBool("jumping", false);
+        animator.speed = 1;
         playerMovementBehaviour.enabled = false;
     }
     public void Restart()
