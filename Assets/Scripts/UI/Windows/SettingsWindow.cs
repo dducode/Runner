@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Settings;
 
 public class SettingsWindow : MonoBehaviour, IUserInterface
 {
@@ -53,7 +54,7 @@ public class SettingsWindow : MonoBehaviour, IUserInterface
     public void SetQualitySettings(float value)
     {
         GameSettings gameSettings = GameManager.gameManager.gameSettings;
-        gameSettings.quality = (GameSettings.Quality)value;
+        gameSettings.quality = (Quality)value;
         GameManager.gameManager.SetSettings(gameSettings);
     }
 }

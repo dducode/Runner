@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Settings;
 
 public class AudioManager : MonoBehaviour, IManagers
 {

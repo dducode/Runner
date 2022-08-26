@@ -1,12 +1,16 @@
 using System;
-[Serializable]
-public struct GameSettings
+
+namespace Settings
 {
+    [Serializable]
+    public struct GameSettings
+    {
+        public bool sound;
+        public bool music;
+        public Quality quality;
+    }
     public enum Quality
     {
         Low, Medium, High
     }
-    public bool sound;
-    public bool music;
-    public Quality quality;
 }

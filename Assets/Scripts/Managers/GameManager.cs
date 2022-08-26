@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+using Settings;
 
 public class GameManager : MonoBehaviour
 {
@@ -95,8 +97,8 @@ public class GameManager : MonoBehaviour
     void SaveGameSettings()
     {
         // сохраняем настройки пользователя
-        int savedSound = gameSettings.sound ? 1 : 0;
-        int savedMusic = gameSettings.music ? 1 : 0;
+        int savedSound = Convert.ToInt32(gameSettings.sound);
+        int savedMusic = Convert.ToInt32(gameSettings.music);
         int savedQuality = (int)gameSettings.quality;
 
         PlayerPrefs.SetInt("Sound", savedSound);
@@ -108,15 +110,15 @@ public class GameManager : MonoBehaviour
     {
         //загружаем настройки пользователя
         int savedSound, savedMusic;
-        GameSettings.Quality quality;
+        Quality quality;
         if (PlayerPrefs.HasKey("Sound") && PlayerPrefs.HasKey("Music"))
         {
             savedSound = PlayerPrefs.GetInt("Sound");
             savedMusic = PlayerPrefs.GetInt("Music");
-            quality = (GameSettings.Quality)PlayerPrefs.GetInt("Quality");
+            quality = (Quality)PlayerPrefs.GetInt("Quality");
             GameSettings _gameSettings;
-            _gameSettings.sound = savedSound is 1;
-            _gameSettings.music = savedMusic is 1;
+            _gameSettings.sound = Convert.ToBoolean(savedSound);
+            _gameSettings.music = Convert.ToBoolean(savedMusic);
             _gameSettings.quality = quality;
             gameSettings = _gameSettings;
         }

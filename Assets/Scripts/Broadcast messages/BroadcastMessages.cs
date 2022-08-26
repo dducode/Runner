@@ -35,18 +35,6 @@ public static class BroadcastMessages<T1>
             dict.Add(message, new Message<T1>());
         dict[message].AddListener(listener);
     }
-    public static void AddListeners(string message, List<Action<T1>> listeners)
-    {
-        if (dict.ContainsKey(message))
-            foreach (Action<T1> listener in listeners)
-                dict[message].AddListener(listener);
-        else
-        {
-            dict.Add(message, new Message<T1>());
-            foreach (Action<T1> listener in listeners)
-                dict[message].AddListener(listener);
-        }
-    }
     public static void RemoveListener(string message, Action<T1> listener)
     {
         if (dict.ContainsKey(message))
