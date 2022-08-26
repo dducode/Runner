@@ -962,6 +962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyMultiplier: 1
+  scoreMultiplier: 1
 --- !u!95 &1431335476
 Animator:
   serializedVersion: 4

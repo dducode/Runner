@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9247e0dde0352241ad8c1be6e6c0b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playMusic: goin_back
+  playMusic: level_music
   beginPointName: Begin
   endPointName: End
   playerPrefab: {fileID: 1893769056011736, guid: eea16ef0f58854448aaa9db9257bc84b,

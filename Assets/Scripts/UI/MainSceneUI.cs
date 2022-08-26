@@ -1,29 +1,41 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+using System;
 
 public class MainSceneUI : MonoBehaviour, IUserInterface
 {
     [SerializeField] Canvas buyHealthWindow;
-    [SerializeField] TextMeshProUGUI health;
+    [SerializeField] Canvas helpWindow;
     [SerializeField] TextMeshProUGUI bestScore;
-    [SerializeField] TextMeshProUGUI moneys;
+    [SerializeField] GameObject health;
+    [SerializeField] GameObject moneys;
     [SerializeField] AudioClip tapSound;
+    [SerializeField] List<Button> buyButtons;
+    TextMeshProUGUI healthText;
+    TextMeshProUGUI moneysText;
     Canvas mainWindow;
 
     public void StartUI()
     {
         buyHealthWindow.enabled = false;
+        helpWindow.enabled = false;
         mainWindow = GetComponent<Canvas>();
+        healthText = health.GetComponentInChildren<TextMeshProUGUI>();
+        moneysText = moneys.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     void Update()
     {
         EncodedData encodedData = GameManager.dataManager.GetGameData();
         int score = (int)encodedData.bestScore;
-        health.text = encodedData.health.ToString();
-        bestScore.text = "Best Score: " + score;
-        moneys.text = encodedData.money.ToString();
+        healthText.text = 
+            GameManager.uiManager.StringConversion(encodedData.health.ToString());
+        bestScore.text = 
+            "Best Score: " + GameManager.uiManager.StringConversion(score.ToString());
+        moneysText.text = 
+            GameManager.uiManager.StringConversion(encodedData.money.ToString());
     }
 
     public void StartGame()
@@ -36,23 +48,52 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
         GameManager.audioManager.PlaySound(tapSound);
         buyHealthWindow.enabled = true;
         mainWindow.enabled = false;
+        health.transform.SetParent(buyHealthWindow.transform);
+        moneys.transform.SetParent(buyHealthWindow.transform);
+        EncodedData encodedData = GameManager.dataManager.GetGameData();
+        foreach (Button buyButton in buyButtons)
+        {
+            TextMeshProUGUI amount = buyButton.GetComponentInChildren<TextMeshProUGUI>();
+            int cost = Int32.Parse(amount.text);
+            cost *= 100;
+            buyButton.interactable = encodedData.money > cost;
+        }
     }
-    public void Close()
+    public void Help()
+    {
+        GameManager.audioManager.PlaySound(tapSound);
+        helpWindow.enabled = true;
+        mainWindow.enabled = false;
+    }
+    public void CloseBuyWindow()
     {
         GameManager.audioManager.PlaySound(tapSound);
         buyHealthWindow.enabled = false;
         mainWindow.enabled = true;
+        health.transform.SetParent(transform);
+        moneys.transform.SetParent(transform);
+    }
+    public void CloseHelpWindow()
+    {
+        GameManager.audioManager.PlaySound(tapSound);
+        helpWindow.enabled = false;
+        mainWindow.enabled = true;
     }
     public void OpenSettings() => GameManager.uiManager.OpenSettings(mainWindow);
 
-    public void HealthAdd(int value)
+    public void HealthAdd(int healthes)
     {
         GameManager.audioManager.PlaySound(tapSound);
         EncodedData encodedData = GameManager.dataManager.GetGameData();
-        if (encodedData.money >= value * 100)
+        int cost = healthes * 100;
+        encodedData.health = encodedData.health + healthes;
+        encodedData.money = encodedData.money - cost;
+        foreach (Button buyButton in buyButtons)
         {
-            encodedData.health = encodedData.health + value;
-            encodedData.money = encodedData.money - value * 100;
+            TextMeshProUGUI amount = buyButton.GetComponentInChildren<TextMeshProUGUI>();
+            int price = Int32.Parse(amount.text);
+            price *= 100;
+            buyButton.interactable = encodedData.money >= price;
         }
         GameManager.dataManager.SetGameData(encodedData);
         GameManager.dataManager.SaveGameData();

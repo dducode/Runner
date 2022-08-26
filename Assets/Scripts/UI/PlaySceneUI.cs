@@ -36,8 +36,8 @@ public class PlaySceneUI : MonoBehaviour, IUserInterface
     {
         EncodedData encodedData = GameManager.dataManager.GetGameData();
         int scoreText = (int)encodedData.score;
-        moneys.text = encodedData.money.ToString();
-        score.text = scoreText.ToString();
+        moneys.text = GameManager.uiManager.StringConversion(encodedData.money.ToString());
+        score.text = GameManager.uiManager.StringConversion(scoreText.ToString());
         if (encodedData.multiplierBonus > 1)
             multiplier.text = "X" + encodedData.multiplierBonus;
         else

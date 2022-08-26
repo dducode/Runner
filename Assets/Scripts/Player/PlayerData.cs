@@ -5,7 +5,8 @@ using System;
 public class PlayerData : MonoBehaviour
 {
     int revivalCostLast; // хранит предыдущее значение стоимости рестарта
-    [Range(1, 1000)] public int moneyMultiplier;
+    [SerializeField, Range(1, 1000)] int moneyMultiplier;
+    [SerializeField, Range(1, 1000)] int scoreMultiplier;
     Timer timer;
 
     void Awake()
@@ -38,7 +39,7 @@ public class PlayerData : MonoBehaviour
     public void SetScore(float playerSpeed)
     {
         EncodedData encodedData = GameManager.dataManager.GetGameData();
-        encodedData.score += playerSpeed * Time.deltaTime * 10f * encodedData.multiplierBonus;
+        encodedData.score += playerSpeed * Time.deltaTime * 10f * encodedData.multiplierBonus * scoreMultiplier;
         int score = (int)encodedData.score;
         GameManager.dataManager.SetGameData(encodedData);
     }

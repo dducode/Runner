@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UIManager : MonoBehaviour, IManagers
 {
@@ -29,6 +30,16 @@ public class UIManager : MonoBehaviour, IManagers
             ui.gameObject.GetComponent<IUserInterface>()?.StartUI();
             ui.enabled = false;
         }
+    }
+
+    public string StringConversion(string target)
+    {
+        List<char> symbols = new List<char>();
+        symbols.AddRange(target);
+        int initialCount = symbols.Count;
+        for (int i = initialCount - 3; i > 0; i -= 3)
+            symbols.Insert(i, ' ');
+        return String.Join<char>(null, symbols);
     }
 
     public void ActiveUI(int index)
