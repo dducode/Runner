@@ -73,8 +73,12 @@ public class DataManager : MonoBehaviour, IManagers
             jsonData = B64X.Encode(jsonData);
         }
     }
+
 #if UNITY_EDITOR
-    public void ResetData()
+
+    bool isDev;
+
+    void ResetData()
     {
         // удаляем игровые данные
         if (File.Exists(Application.persistentDataPath + "/SaveGameData.dat"))
@@ -87,6 +91,46 @@ public class DataManager : MonoBehaviour, IManagers
         }
         else
             Debug.LogError("Сохранённые данные отсутствуют");
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+            isDev = !isDev;
+    }
+
+    void OnGUI()
+    {
+        if (isDev)
+        {
+            Rect position = new Rect(0, Screen.height - 100, Screen.width / 2, 100);
+            GUIStyle style = new GUIStyle(GUI.skin.button);
+            style.fontSize = 50;
+            style.normal.textColor = Color.yellow;
+            if (GUI.Button(position, "100 000 money", style))
+            {
+                jsonData = B64X.Decode(jsonData);
+                EncodedData encodedData = JsonUtility.FromJson<EncodedData>(jsonData);
+                encodedData.money += 100000;
+                jsonData = JsonUtility.ToJson(encodedData);
+                jsonData = B64X.Encode(jsonData);
+                SaveGameData();
+            }
+            position.y -= 100;
+            if (GUI.Button(position, "1 000 000 score", style))
+            {
+                jsonData = B64X.Decode(jsonData);
+                EncodedData encodedData = JsonUtility.FromJson<EncodedData>(jsonData);
+                encodedData.bestScore += 1000000;
+                jsonData = JsonUtility.ToJson(encodedData);
+                jsonData = B64X.Encode(jsonData);
+                SaveGameData();
+            }
+            position.y -= 100;
+            style.normal.textColor = Color.red;
+            if (GUI.Button(position, "Reset Data", style))
+                ResetData();
+        }
     }
 #endif
 }

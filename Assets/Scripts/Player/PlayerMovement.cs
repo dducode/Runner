@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-#if UNITY_ANDROID
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -54,9 +53,8 @@ public class PlayerMovement : MonoBehaviour
             else if (touch.phase is TouchPhase.Ended)
                 endTouch = true;
         }
-#endif
 
-#if UNITY_STANDALONE
+#if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
             startPos = Input.mousePosition;
         else if (Input.GetMouseButton(0))
@@ -77,15 +75,15 @@ public class PlayerMovement : MonoBehaviour
         move.x *= runSpeed;
         move.z = runSpeed;
         move = transform.TransformDirection(move);
-        _charController.Move(move * Time.deltaTime);
+        _charController.Move(move * Time.smoothDeltaTime);
 
-        runSpeed += Time.deltaTime / 60;
+        runSpeed += Time.smoothDeltaTime / 60;
         runSpeed = Mathf.Clamp(runSpeed, minRunSpeed, maxRunSpeed);
 
         if (_charController.isGrounded)
             _vertSpeed = -0.01f;
         else
-            _vertSpeed += gravity * 5 * Time.deltaTime;
+            _vertSpeed += gravity * 5 * Time.smoothDeltaTime;
     }
     private void MotionVector()
     {

@@ -18,8 +18,8 @@ public class CameraMove : MonoBehaviour
         if (player is not null)
         {
             move.z = player.transform.position.z + startPos.z;
-            move.x = Mathf.Lerp(move.x, player.transform.position.x / 2, Time.deltaTime * 15f);
-            move.y = Mathf.Lerp(move.y, (player.transform.position.y / 2) + startPos.y, Time.deltaTime * 15f);
+            move.x = Mathf.Lerp(move.x, player.transform.position.x / 2, Time.smoothDeltaTime * 15f);
+            move.y = Mathf.Lerp(move.y, (player.transform.position.y / 2) + startPos.y, Time.smoothDeltaTime * 15f);
             transform.position = move;
         }
         else

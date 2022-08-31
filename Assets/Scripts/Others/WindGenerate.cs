@@ -6,29 +6,17 @@ using UnityEngine;
 public class WindGenerate : MonoBehaviour
 {
     [SerializeField] List<Transform> targets;
-    [SerializeField, Range (0, 1000)] float minWindForce;
-    [SerializeField, Range (0, 1000)] float maxWindForce;
-    [SerializeField, Range(0.01f, 10)] float minWindFrequency;
-    [SerializeField, Range(0.01f, 10)] float maxWindFrequency;
+    [SerializeField] MinMaxRange windForce = new MinMaxRange(0, 1000);
+    [SerializeField] MinMaxRange windFrequency = new MinMaxRange(0.01f, 10);
     float time;
     float windForceLerp;
-    float windForce;
+    float _windForce;
 
     void Start()
     {
-        if (minWindForce > maxWindForce)
-        {
-            Debug.LogWarning("Минимальная сила ветра изменена, т.к. она не может быть больше максимальной");
-            minWindForce = maxWindForce;
-        }
-        if (minWindFrequency > maxWindFrequency)
-        {
-            Debug.LogWarning("Минимальная частота была изменена, т.к. она не может быть больше максимальной");
-            minWindFrequency = maxWindFrequency;
-        }
-        time = 1 / Random.Range(minWindFrequency, maxWindFrequency);
-        windForceLerp = 6 * Random.Range(minWindForce, maxWindForce);
-        windForce = 0;
+        time = 1 / Random.Range(windFrequency.minValue, windFrequency.maxValue);
+        windForceLerp = 6 * Random.Range(windForce.minValue, windForce.maxValue);
+        _windForce = 0;
     }
 
     void Update()
@@ -36,11 +24,11 @@ public class WindGenerate : MonoBehaviour
         time -= Time.deltaTime;
         if (time <= 0f)
         {
-            windForceLerp = Random.Range(minWindForce, maxWindForce);
-            time = 1 / Random.Range(minWindFrequency, maxWindFrequency);
+            windForceLerp = Random.Range(windForce.minValue, windForce.maxValue);
+            time = 1 / Random.Range(windFrequency.minValue, windFrequency.maxValue);
         }
-        windForce = Mathf.Lerp(windForce, windForceLerp, Time.deltaTime);
+        _windForce = Mathf.Lerp(_windForce, windForceLerp, Time.smoothDeltaTime);
         foreach (Transform target in targets)
-            target.Rotate(0, windForce * Time.deltaTime, 0);
+            target.Rotate(0, _windForce * Time.smoothDeltaTime, 0);
     }
 }
