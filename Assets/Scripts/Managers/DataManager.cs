@@ -77,6 +77,7 @@ public class DataManager : MonoBehaviour, IManagers
 #if UNITY_EDITOR
 
     bool isDev;
+    Rect window = new Rect(0, Screen.height - 150, 300, 150);
 
     void ResetData()
     {
@@ -102,35 +103,39 @@ public class DataManager : MonoBehaviour, IManagers
     void OnGUI()
     {
         if (isDev)
+            window = GUILayout.Window(0, window, Window, "Development console");  
+    }
+
+    void Window(int id)
+    {
+        GUIStyle style = new GUIStyle(GUI.skin.box);
+        GUILayoutOption[] options = new GUILayoutOption[] { 
+            GUILayout.MaxWidth(400), GUILayout.MaxHeight(400),
+        };
+        style = new GUIStyle(GUI.skin.button);
+        style.normal.textColor = Color.green;
+        if (GUILayout.Button("100 000 money", style, options))
         {
-            Rect position = new Rect(0, Screen.height - 100, Screen.width / 2, 100);
-            GUIStyle style = new GUIStyle(GUI.skin.button);
-            style.fontSize = 50;
-            style.normal.textColor = Color.yellow;
-            if (GUI.Button(position, "100 000 money", style))
-            {
-                jsonData = B64X.Decode(jsonData);
-                EncodedData encodedData = JsonUtility.FromJson<EncodedData>(jsonData);
-                encodedData.money += 100000;
-                jsonData = JsonUtility.ToJson(encodedData);
-                jsonData = B64X.Encode(jsonData);
-                SaveGameData();
-            }
-            position.y -= 100;
-            if (GUI.Button(position, "1 000 000 score", style))
-            {
-                jsonData = B64X.Decode(jsonData);
-                EncodedData encodedData = JsonUtility.FromJson<EncodedData>(jsonData);
-                encodedData.bestScore += 1000000;
-                jsonData = JsonUtility.ToJson(encodedData);
-                jsonData = B64X.Encode(jsonData);
-                SaveGameData();
-            }
-            position.y -= 100;
-            style.normal.textColor = Color.red;
-            if (GUI.Button(position, "Reset Data", style))
-                ResetData();
+            jsonData = B64X.Decode(jsonData);
+            EncodedData encodedData = JsonUtility.FromJson<EncodedData>(jsonData);
+            encodedData.money += 100000;
+            jsonData = JsonUtility.ToJson(encodedData);
+            jsonData = B64X.Encode(jsonData);
+            SaveGameData();
         }
+        if (GUILayout.Button("1 000 000 score", style, options))
+        {
+            jsonData = B64X.Decode(jsonData);
+            EncodedData encodedData = JsonUtility.FromJson<EncodedData>(jsonData);
+            encodedData.bestScore += 1000000;
+            jsonData = JsonUtility.ToJson(encodedData);
+            jsonData = B64X.Encode(jsonData);
+            SaveGameData();
+        }
+        style.normal.textColor = Color.red;
+        if (GUILayout.Button("Reset Data", style, options))
+            ResetData();
+        GUI.DragWindow();
     }
 #endif
 }
