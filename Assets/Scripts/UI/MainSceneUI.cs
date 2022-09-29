@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
@@ -8,25 +8,46 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
 {
     [SerializeField] Canvas buyHealthWindow;
     [SerializeField] Canvas helpWindow;
+    [SerializeField] GameObject tournamentTable;
     [SerializeField] TextMeshProUGUI bestScore;
     [SerializeField] GameObject health;
     [SerializeField] GameObject moneys;
     [SerializeField] AudioClip tapSound;
     [SerializeField] List<Button> buyButtons;
+    [SerializeField] TMP_InputField nickname;
+    TournamentTable table;
     TextMeshProUGUI healthText;
     TextMeshProUGUI moneysText;
     Canvas mainWindow;
 
     public void StartUI()
     {
+        nickname.gameObject.SetActive(false);
+        tournamentTable.SetActive(false);
         buyHealthWindow.enabled = false;
         helpWindow.enabled = false;
         mainWindow = GetComponent<Canvas>();
         healthText = health.GetComponentInChildren<TextMeshProUGUI>();
         moneysText = moneys.GetComponentInChildren<TextMeshProUGUI>();
+        table = tournamentTable.GetComponent<TournamentTable>();
+        EncodedData encodedData = GameManager.dataManager.GetGameData();
+        if (encodedData.nickname == "")
+            nickname.gameObject.SetActive(true);
+        else
+            table.InitializeTable();
+        UpdateViews();
     }
 
-    void Update()
+    public void WriteNick()
+    {
+        EncodedData encodedData = GameManager.dataManager.GetGameData();
+        encodedData.nickname = nickname.textComponent.text;
+        GameManager.dataManager.SetGameData(encodedData);
+        table.AddPlayerInTable(encodedData.nickname);
+        nickname.gameObject.SetActive(false);
+    }
+
+    public void UpdateViews()
     {
         EncodedData encodedData = GameManager.dataManager.GetGameData();
         int score = (int)encodedData.bestScore;
@@ -36,6 +57,7 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
             "Best Score: " + GameManager.uiManager.StringConversion(score.ToString());
         moneysText.text = 
             GameManager.uiManager.StringConversion(encodedData.money.ToString());
+        table.UpdatePlayerScoreInDatabase();
     }
 
     public void StartGame()
@@ -64,6 +86,11 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
         GameManager.audioManager.PlaySound(tapSound);
         helpWindow.enabled = true;
         mainWindow.enabled = false;
+    }
+    public void OpenTable()
+    {
+        GameManager.audioManager.PlaySound(tapSound);
+        tournamentTable.SetActive(!tournamentTable.activeSelf);
     }
     public void CloseBuyWindow()
     {
@@ -97,5 +124,6 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
         }
         GameManager.dataManager.SetGameData(encodedData);
         GameManager.dataManager.SaveGameData();
+        UpdateViews();
     }
 }

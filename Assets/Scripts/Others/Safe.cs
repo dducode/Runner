@@ -3,6 +3,7 @@
 [Serializable]
 public class EncryptedData
 {
+    public string nickname;
     public float bestScore;
     public int health;
     public int money;
@@ -10,6 +11,7 @@ public class EncryptedData
 [Serializable]
 public class EncodedData
 {
+    public string nickname;
     public float score;
     public float bestScore;
     public int health;

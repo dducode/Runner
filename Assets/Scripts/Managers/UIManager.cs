@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour, IManagers
         }
     }
 
+    public void UpdateViews() => mainSceneUI.GetComponent<MainSceneUI>().UpdateViews();
+
     public string StringConversion(string target)
     {
         List<char> symbols = new List<char>();

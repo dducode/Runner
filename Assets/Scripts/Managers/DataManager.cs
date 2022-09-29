@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Assets.Scripts.Common;
+using System;
+using System.Data;
 
 public class DataManager : MonoBehaviour, IManagers
 {
@@ -35,6 +37,7 @@ public class DataManager : MonoBehaviour, IManagers
         jsonData = B64X.Decode(jsonData);
         EncodedData encodedData = JsonUtility.FromJson<EncodedData>(jsonData);
         EncryptedData encryptedData = new EncryptedData();
+        encryptedData.nickname = encodedData.nickname;
         encryptedData.bestScore = encodedData.bestScore;
         encryptedData.health = encodedData.health;
         encryptedData.money = encodedData.money;
@@ -60,6 +63,7 @@ public class DataManager : MonoBehaviour, IManagers
             jsonForLoad = AES.Decrypt(jsonForLoad, Key.password);
             EncryptedData encryptedData = JsonUtility.FromJson<EncryptedData>(jsonForLoad);
             EncodedData encodedData = new EncodedData();
+            encodedData.nickname = encryptedData.nickname;
             encodedData.bestScore = encryptedData.bestScore;
             encodedData.health = encryptedData.health;
             encodedData.money = encryptedData.money;
@@ -71,6 +75,35 @@ public class DataManager : MonoBehaviour, IManagers
             EncodedData encodedData = new EncodedData();
             jsonData = JsonUtility.ToJson(encodedData);
             jsonData = B64X.Encode(jsonData);
+        }
+    }
+
+    public void UpdateScoresInDatabase(int day)
+    {
+        EncodedData encodedData = GetGameData();
+        for (int i = 0; i < day; i++)
+        {
+            DataTable table = MyDataBase.GetTable("SELECT * FROM Players ORDER BY id_player");
+            for (int j = 0; j < table.Rows.Count; j++)
+            {
+                int score = UnityEngine.Random.Range(0, 1000000);
+                if (encodedData.nickname == table.Rows[j][1].ToString())
+                {
+                    string query = @$"
+                    UPDATE Players 
+                    SET best_score = {(int)encodedData.bestScore}
+                    WHERE id_player = {j + 1}";
+                    MyDataBase.ExecuteQueryWithoutAnswer(query);
+                }
+                else if (score > Convert.ToInt32(table.Rows[j][2]))
+                {
+                    string query = @$"
+                    UPDATE Players 
+                    SET best_score = {score}
+                    WHERE id_player = {j + 1}";
+                    MyDataBase.ExecuteQueryWithoutAnswer(query);
+                }
+            }
         }
     }
 
@@ -131,6 +164,7 @@ public class DataManager : MonoBehaviour, IManagers
             jsonData = JsonUtility.ToJson(encodedData);
             jsonData = B64X.Encode(jsonData);
             SaveGameData();
+            GameManager.uiManager.UpdateViews();
         }
         style.normal.textColor = Color.red;
         if (GUILayout.Button("Reset Data", style, options))

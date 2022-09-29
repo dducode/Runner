@@ -1,7 +1,7 @@
 ﻿using System;
 
 [Serializable]
-class SavedData
+public class SavedData
 {
     public string savedJson;
 }

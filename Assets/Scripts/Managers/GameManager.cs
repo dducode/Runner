@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
         BroadcastMessages<bool>.SendMessage(Messages.PAUSE, false);
         scene = SceneManager.GetActiveScene();
         uiManager.ActiveUI(scene.buildIndex);
+        uiManager.UpdateViews();
         async.completed -= LoadCompleted;
     }
     IEnumerator LoadProgress()
