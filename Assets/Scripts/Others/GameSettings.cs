@@ -1,6 +1,6 @@
 using System;
 
-namespace Settings
+namespace Assets.Scripts.Settings
 {
     [Serializable]
     public struct GameSettings

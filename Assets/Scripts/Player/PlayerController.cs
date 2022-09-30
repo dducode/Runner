@@ -17,15 +17,15 @@ public class PlayerController : MonoBehaviour
 
     void OnEnable()
     {
-        BroadcastMessages.AddListener(Messages.DEATH, Death);
-        BroadcastMessages.AddListener(Messages.RESTART, Restart);
-        BroadcastMessages<bool>.AddListener(Messages.PAUSE, IsPause);
+        BroadcastMessages.AddListener(MessageType.DEATH, Death);
+        BroadcastMessages.AddListener(MessageType.RESTART, Restart);
+        BroadcastMessages<bool>.AddListener(MessageType.PAUSE, IsPause);
     }
     void OnDisable()
     {
-        BroadcastMessages.RemoveListener(Messages.DEATH, Death);
-        BroadcastMessages.RemoveListener(Messages.RESTART, Restart);
-        BroadcastMessages<bool>.RemoveListener(Messages.PAUSE, IsPause);
+        BroadcastMessages.RemoveListener(MessageType.DEATH, Death);
+        BroadcastMessages.RemoveListener(MessageType.RESTART, Restart);
+        BroadcastMessages<bool>.RemoveListener(MessageType.PAUSE, IsPause);
     }
 
     void Start()
@@ -55,15 +55,15 @@ public class PlayerController : MonoBehaviour
     {
         if ((charController.collisionFlags & CollisionFlags.Sides) is not 0 && hit.collider.CompareTag("Barriers"))
         {
-            BroadcastMessages.SendMessage(Messages.DEATH);
-            GameManager.audioManager.PlaySound(deathSound);
+            BroadcastMessages.SendMessage(MessageType.DEATH);
+            Managers.audioManager.PlaySound(deathSound);
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SpawnTrigger"))
-            BroadcastMessages.SendMessage(Messages.SPAWN_CHUNK);
+            BroadcastMessages.SendMessage(MessageType.SPAWN_CHUNK);
     }
 
     public void Death()

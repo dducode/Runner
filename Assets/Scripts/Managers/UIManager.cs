@@ -5,6 +5,9 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
+///<summary>
+///Менеджер игрового пользовательского интерфейса
+///</summary>
 public class UIManager : MonoBehaviour, IManagers
 {
     [SerializeField] Canvas mainSceneUI;
@@ -32,6 +35,9 @@ public class UIManager : MonoBehaviour, IManagers
         }
     }
 
+    ///<summary>
+    ///Обновляет отображение UI
+    ///</summary>
     public void UpdateViews() => mainSceneUI.GetComponent<MainSceneUI>().UpdateViews();
 
     public string StringConversion(string target)
@@ -60,7 +66,7 @@ public class UIManager : MonoBehaviour, IManagers
 
     public void OpenSettings(bool isOpen)
     {
-        GameManager.audioManager.PlaySound(tapSound);
+        Managers.audioManager.PlaySound(tapSound);
         settingsWindow.enabled = isOpen;
         otherWindow.enabled = !isOpen;
     }

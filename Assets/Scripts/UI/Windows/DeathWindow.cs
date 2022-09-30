@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Assets.Scripts.Security;
 
 [RequireComponent(typeof(Canvas))]
 public class DeathWindow : MonoBehaviour
@@ -11,12 +12,12 @@ public class DeathWindow : MonoBehaviour
     Canvas canvas;
     Vector3 startPos;
 
-    void OnEnable() => BroadcastMessages.AddListener(Messages.DEATH, Death);
-    void OnDisable() => BroadcastMessages.RemoveListener(Messages.DEATH, Death);
+    void OnEnable() => BroadcastMessages.AddListener(MessageType.DEATH, Death);
+    void OnDisable() => BroadcastMessages.RemoveListener(MessageType.DEATH, Death);
 
     void Death()
     {
-        EncodedData encodedData = GameManager.dataManager.GetGameData();
+        EncodedData encodedData = Managers.dataManager.GetData();
         restartButton.interactable = encodedData.health > encodedData.revivalCost;
         health.text = encodedData.revivalCost.ToString();
     }
@@ -28,15 +29,15 @@ public class DeathWindow : MonoBehaviour
 
     public void Restart()
     {
-        GameManager.audioManager.PlaySound(tapSound);
+        Managers.audioManager.PlaySound(tapSound);
         canvas.enabled = false;
-        BroadcastMessages.SendMessage(Messages.RESTART);
+        BroadcastMessages.SendMessage(MessageType.RESTART);
     }
 
     public void MainMenu()
     {
-        GameManager.audioManager.PlaySound(tapSound);
+        Managers.audioManager.PlaySound(tapSound);
         canvas.enabled = false;
-        GameManager.gameManager.LoadScene(1);
+        Managers.gameManager.LoadScene(1);
     }
 }

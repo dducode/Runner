@@ -4,21 +4,25 @@ using UnityEngine;
 using System.Data;
 using Mono.Data.Sqlite;
 using System.IO;
+using System;
 
-public class MyDataBase
+///<summary>
+///Класс для доступа к базе данных
+///</summary>
+public class DatabaseManager : MonoBehaviour, IManagers
 {
-    const string fileName = "db.bytes";
-    static string DBPath;
+    const string fileName = "dbAndroid.bytes";
+    string DBPath;
 
-    static MyDataBase()
+    public void StartManager()
     {
         DBPath = GetDatabasePath();
     }
 
-    static string GetDatabasePath()
+    string GetDatabasePath()
     {
 #if UNITY_EDITOR
-        return Path.Combine(Application.streamingAssetsPath, fileName);
+        return "Assets/DataBase/dbEditor.bytes";
 #elif UNITY_ANDROID
         string filePath = Path.Combine(Application.persistentDataPath, fileName);
         if(!File.Exists(filePath)) UnpackDatabase(filePath);
@@ -26,7 +30,7 @@ public class MyDataBase
 #endif
     }
 
-    static void UnpackDatabase(string toPath)
+    void UnpackDatabase(string toPath)
     {
         string fromPath = Path.Combine(Application.streamingAssetsPath, fileName);
 
@@ -36,7 +40,10 @@ public class MyDataBase
         File.WriteAllBytes(toPath, reader.bytes);
     }
 
-    public static void ExecuteQueryWithoutAnswer(string query)
+    ///<summary>
+    ///Выполняет запрос к базе данных
+    ///</summary>
+    public void ExecuteQueryWithoutAnswer(string query)
     {
         using var connection = new SqliteConnection("Data Source=" + DBPath);
         connection.Open();
@@ -45,17 +52,22 @@ public class MyDataBase
         command.ExecuteNonQuery();
     }
 
-    public static string ExecuteQueryWithAnswer(string query)
+    ///<summary>
+    ///Выполняет запрос к базе данных
+    ///</summary>
+    ///<returns>Результат запроса</returns>
+    public object ExecuteQueryWithAnswer(string query)
     {
         using var connection = new SqliteConnection("Data Source=" + DBPath);
         connection.Open();
 
         SqliteCommand command = new SqliteCommand(query, connection);
         var answer = command.ExecuteScalar();
-        return answer?.ToString();
+        return answer;
     }
 
-    public static DataTable GetTable(string query)
+    ///<returns>Таблица из базы данных</returns>
+    public DataTable GetTable(string query)
     {
         using var connection = new SqliteConnection("Data Source=" + DBPath);
         connection.Open();

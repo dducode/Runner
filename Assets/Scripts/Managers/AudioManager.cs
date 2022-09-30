@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Settings;
+using Assets.Scripts.Settings;
 
 public class AudioManager : MonoBehaviour, IManagers
 {
@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour, IManagers
 
     public void StartManager()
     {
-        GameSettings gameSettings = GameManager.gameManager.gameSettings;
+        GameSettings gameSettings = Managers.settingsManager.gameSettings;
         soundSource.mute = !gameSettings.sound;
         musicSource.mute = !gameSettings.music;
     }

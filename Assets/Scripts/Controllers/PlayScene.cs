@@ -13,23 +13,23 @@ public class PlayScene : SceneController
 
     private void Start()
     {
-        BroadcastMessages.AddListener(Messages.RESTART, DestroyChilds);
-        BroadcastMessages.AddListener(Messages.SPAWN_CHUNK, SpawnChunk);
-        BroadcastMessages<bool>.AddListener(Messages.PAUSE, IsPause);
+        BroadcastMessages.AddListener(MessageType.RESTART, DestroyChilds);
+        BroadcastMessages.AddListener(MessageType.SPAWN_CHUNK, SpawnChunk);
+        BroadcastMessages<bool>.AddListener(MessageType.PAUSE, IsPause);
         player = Instantiate(playerPrefab);
 
         GameObject firstChunk = Instantiate(ChunksPrefab[Random.Range(0, ChunksPrefab.Length)]);
         spawnedChunks.Add(firstChunk);
         SpawnChunk();
 
-        GameManager.audioManager.PlayMusic(Resources.Load("Music/" + playMusic) as AudioClip);
+        Managers.audioManager.PlayMusic(Resources.Load("Music/" + playMusic) as AudioClip);
     }
 
     private void OnDestroy()
     {
-        BroadcastMessages.RemoveListener(Messages.RESTART, DestroyChilds);
-        BroadcastMessages.RemoveListener(Messages.SPAWN_CHUNK, SpawnChunk);
-        BroadcastMessages<bool>.RemoveListener(Messages.PAUSE, IsPause);
+        BroadcastMessages.RemoveListener(MessageType.RESTART, DestroyChilds);
+        BroadcastMessages.RemoveListener(MessageType.SPAWN_CHUNK, SpawnChunk);
+        BroadcastMessages<bool>.RemoveListener(MessageType.PAUSE, IsPause);
     }
 
     void FixedUpdate()
@@ -95,5 +95,5 @@ public class PlayScene : SceneController
 
     public void IsPause(bool isPause) => Time.timeScale = isPause ? 0f : 1f;
 
-    public void OnApplicationPause(bool _pause) => BroadcastMessages<bool>.SendMessage(Messages.PAUSE, _pause);
+    public void OnApplicationPause(bool _pause) => BroadcastMessages<bool>.SendMessage(MessageType.PAUSE, _pause);
 }

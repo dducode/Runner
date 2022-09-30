@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Settings;
+using Assets.Scripts.Settings;
 
 public class SettingsWindow : MonoBehaviour, IUserInterface
 {
@@ -11,7 +11,7 @@ public class SettingsWindow : MonoBehaviour, IUserInterface
 
     public void StartUI()
     {
-        GameSettings gameSettings = GameManager.gameManager.gameSettings;
+        GameSettings gameSettings = Managers.settingsManager.gameSettings;
         sound.isOn = gameSettings.sound;
         music.isOn = gameSettings.music;
         quality.value = (float)gameSettings.quality;
@@ -27,17 +27,17 @@ public class SettingsWindow : MonoBehaviour, IUserInterface
 
     void SetMuteSettings()
     {
-        GameSettings gameSettings = GameManager.gameManager.gameSettings;
+        GameSettings gameSettings = Managers.settingsManager.gameSettings;
         gameSettings.sound = sound.isOn;
         gameSettings.music = music.isOn;
-        GameManager.gameManager.SetSettings(gameSettings);
-        GameManager.audioManager.PlaySound(tapSound);
+        Managers.settingsManager.SetSettings(gameSettings);
+        Managers.audioManager.PlaySound(tapSound);
     }
 
     public void SetQualitySettings(float value)
     {
-        GameSettings gameSettings = GameManager.gameManager.gameSettings;
+        GameSettings gameSettings = Managers.settingsManager.gameSettings;
         gameSettings.quality = (Quality)value;
-        GameManager.gameManager.SetSettings(gameSettings);
+        Managers.settingsManager.SetSettings(gameSettings);
     }
 }

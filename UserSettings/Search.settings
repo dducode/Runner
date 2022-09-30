@@ -10,6 +10,9 @@ scopes = {
 	"last_search.DA949528" = ""
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
+	"last_search.DD5CDD96" = "Text (TMP)"
+	"OpenInspectorPreview.DD5CDD96" = "0"
+	"currentGroup.DD5CDD96" = "scene"
 }
 providers = {
 	adb = {
@@ -56,11 +59,14 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"Text (TMP)/Managers/UI manager/MainSceneUI/Weekly tournament/Viewport/Content"
+	"/Managers/UI manager/MainSceneUI/Weekly tournament/Viewport/Content"
+	"Text (TMP)"
 ]
 searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
-showSavedSearchPanel = false
+showSavedSearchPanel = true
 expandedQueries = [
 ]
 queryBuilder = false

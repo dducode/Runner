@@ -2,24 +2,43 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Assets.Scripts.Common;
+using Assets.Scripts.Security;
 using System;
 using System.Data;
 
+///<summary>
+///Класс для доступа к данным игрока
+///</summary>
 public class DataManager : MonoBehaviour, IManagers
 {
-    string jsonData;
+    string jsonData; // данные игрока в формате JSON
 
     public void StartManager()
     {
-        LoadGameData();
+        LoadData();
+        Application.quitting += SaveData;
     }
 
-    public void SetGameData(EncodedData encodedData)
+    void OnEnable() => BroadcastMessages<bool>.AddListener(MessageType.PAUSE, OnPause);
+    void OnDisable() => BroadcastMessages<bool>.RemoveListener(MessageType.PAUSE, OnPause);
+
+    void OnPause(bool isPause)
+    {
+        if (isPause) SaveData();
+    }
+
+    ///<summary>
+    ///Обновляет данные игрока
+    ///</summary>
+    ///<param name="serialize">Указывает, должны ли данные сохраняться на диск</param>
+    public void SetData(EncodedData encodedData, bool serialize = false)
     {
         jsonData = JsonUtility.ToJson(encodedData);
         jsonData = B64X.Encode(jsonData);
+        if (serialize) SaveData();
     }
-    public EncodedData GetGameData()
+    ///<returns>Данные игрока</returns>
+    public EncodedData GetData()
     {
         jsonData = B64X.Decode(jsonData);
         EncodedData encodedData = JsonUtility.FromJson<EncodedData>(jsonData);
@@ -27,7 +46,7 @@ public class DataManager : MonoBehaviour, IManagers
         return encodedData;
     }
 
-    public void SaveGameData()
+    void SaveData()
     {
         // сохраняем игровые данные
         FileStream file = File.Create(Application.persistentDataPath + "/SaveGameData.dat");
@@ -49,7 +68,7 @@ public class DataManager : MonoBehaviour, IManagers
         file.Close();
         jsonData = B64X.Encode(jsonData);
     }
-    public void LoadGameData()
+    void LoadData()
     {
         // загружаем игровые данные
         if (File.Exists(Application.persistentDataPath + "/SaveGameData.dat"))
@@ -78,35 +97,6 @@ public class DataManager : MonoBehaviour, IManagers
         }
     }
 
-    public void UpdateScoresInDatabase(int day)
-    {
-        EncodedData encodedData = GetGameData();
-        for (int i = 0; i < day; i++)
-        {
-            DataTable table = MyDataBase.GetTable("SELECT * FROM Players ORDER BY id_player");
-            for (int j = 0; j < table.Rows.Count; j++)
-            {
-                int score = UnityEngine.Random.Range(0, 1000000);
-                if (encodedData.nickname == table.Rows[j][1].ToString())
-                {
-                    string query = @$"
-                    UPDATE Players 
-                    SET best_score = {(int)encodedData.bestScore}
-                    WHERE id_player = {j + 1}";
-                    MyDataBase.ExecuteQueryWithoutAnswer(query);
-                }
-                else if (score > Convert.ToInt32(table.Rows[j][2]))
-                {
-                    string query = @$"
-                    UPDATE Players 
-                    SET best_score = {score}
-                    WHERE id_player = {j + 1}";
-                    MyDataBase.ExecuteQueryWithoutAnswer(query);
-                }
-            }
-        }
-    }
-
 #if UNITY_EDITOR
 
     bool isDev;
@@ -119,9 +109,17 @@ public class DataManager : MonoBehaviour, IManagers
         {
             File.Delete(Application.persistentDataPath + "/SaveGameData.dat");
 
-            EncodedData encodedData = new EncodedData();
+            EncodedData encodedData = GetData();
+            // удаляем данные игрока из базы данных
+            Managers.databaseManager.ExecuteQueryWithoutAnswer(
+                $"DELETE FROM Players WHERE nickname = '{encodedData.nickname}'"
+                );
+            Managers.databaseManager.ExecuteQueryWithoutAnswer("UPDATE Players SET best_score = 0");
+            encodedData = new EncodedData();
             jsonData = JsonUtility.ToJson(encodedData);
             jsonData = B64X.Encode(jsonData);
+            
+            Managers.uiManager.UpdateViews();
         }
         else
             Debug.LogError("Сохранённые данные отсутствуют");
@@ -154,7 +152,7 @@ public class DataManager : MonoBehaviour, IManagers
             encodedData.money += 100000;
             jsonData = JsonUtility.ToJson(encodedData);
             jsonData = B64X.Encode(jsonData);
-            SaveGameData();
+            SaveData();
         }
         if (GUILayout.Button("1 000 000 score", style, options))
         {
@@ -163,8 +161,8 @@ public class DataManager : MonoBehaviour, IManagers
             encodedData.bestScore += 1000000;
             jsonData = JsonUtility.ToJson(encodedData);
             jsonData = B64X.Encode(jsonData);
-            SaveGameData();
-            GameManager.uiManager.UpdateViews();
+            SaveData();
+            Managers.uiManager.UpdateViews();
         }
         style.normal.textColor = Color.red;
         if (GUILayout.Button("Reset Data", style, options))

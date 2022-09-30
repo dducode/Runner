@@ -14,7 +14,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement>())
         {
-            GameManager.audioManager.PlaySound(collectibleClip);
+            Managers.audioManager.PlaySound(collectibleClip);
             Destroy(gameObject);
         }
     }

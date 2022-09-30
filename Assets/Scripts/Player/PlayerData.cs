@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Assets.Scripts.Security;
 
 [RequireComponent(typeof(PlayerController))]
 public class PlayerData : MonoBehaviour
@@ -15,31 +16,28 @@ public class PlayerData : MonoBehaviour
 
     void OnEnable()
     {
-        BroadcastMessages.AddListener(Messages.RESTART, Restart);
-    }
-    void OnDisable()
-    {
-        BroadcastMessages.RemoveListener(Messages.RESTART, Restart);
-        SetGameData();
-    }
-    
-    void SetGameData()
-    {
-        EncodedData encodedData = GameManager.dataManager.GetGameData();
-        if (encodedData.score > encodedData.bestScore)
-            encodedData.bestScore = encodedData.score;
+        BroadcastMessages.AddListener(MessageType.RESTART, Restart);
+        EncodedData encodedData = Managers.dataManager.GetData();
         encodedData.score = 0f;
         encodedData.revivalCost = 1;
         encodedData.multiplierBonus = 1;
-        GameManager.dataManager.SetGameData(encodedData);
+        Managers.dataManager.SetData(encodedData);
+    }
+    void OnDisable()
+    {
+        BroadcastMessages.RemoveListener(MessageType.RESTART, Restart);
+        EncodedData encodedData = Managers.dataManager.GetData();
+        if (encodedData.score > encodedData.bestScore)
+            encodedData.bestScore = encodedData.score;
+        Managers.dataManager.SetData(encodedData, true);
     }
 
     public void SetScore(float playerSpeed)
     {
-        EncodedData encodedData = GameManager.dataManager.GetGameData();
+        EncodedData encodedData = Managers.dataManager.GetData();
         encodedData.score += playerSpeed * Time.deltaTime * 10f * encodedData.multiplierBonus;
         int score = (int)encodedData.score;
-        GameManager.dataManager.SetGameData(encodedData);
+        Managers.dataManager.SetData(encodedData);
     }
 
     void OnTriggerEnter(Collider other)
@@ -54,7 +52,7 @@ public class PlayerData : MonoBehaviour
 
     public void CollectBonus(BonusType bonusType, int bonusValue)
     {
-        EncodedData encodedData = GameManager.dataManager.GetGameData();
+        EncodedData encodedData = Managers.dataManager.GetData();
         if (bonusType is BonusType.Coin)
             encodedData.money = encodedData.money + bonusValue;
         else if (bonusType is BonusType.Multiplier)
@@ -62,24 +60,24 @@ public class PlayerData : MonoBehaviour
             encodedData.multiplierBonus = bonusValue;
             timer.AddListener(10f, ResetMultiplier);
         }
-        GameManager.dataManager.SetGameData(encodedData);
+        Managers.dataManager.SetData(encodedData);
     }
     void ResetMultiplier()
     {
-        EncodedData encodedData = GameManager.dataManager.GetGameData();
+        EncodedData encodedData = Managers.dataManager.GetData();
         encodedData.multiplierBonus = 1;
-        GameManager.dataManager.SetGameData(encodedData);
+        Managers.dataManager.SetData(encodedData);
     }
 
     public void Restart()
     {
-        EncodedData encodedData = GameManager.dataManager.GetGameData();
+        EncodedData encodedData = Managers.dataManager.GetData();
         encodedData.health -= encodedData.revivalCost;
         { // каждое увеличение стоимости оживления соответствует числу Фибоначчи
             int revivalCostTemp = encodedData.revivalCost;
             encodedData.revivalCost += revivalCostLast;
             revivalCostLast = revivalCostTemp;
         }
-        GameManager.dataManager.SetGameData(encodedData);
+        Managers.dataManager.SetData(encodedData);
     }
 }

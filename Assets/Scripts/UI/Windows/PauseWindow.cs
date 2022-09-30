@@ -10,8 +10,8 @@ public class PauseWindow : MonoBehaviour
     [SerializeField] AudioClip tapSound;
     int time;
 
-    void OnEnable() => BroadcastMessages<bool>.AddListener(Messages.PAUSE, IsPause);
-    void OnDisable() => BroadcastMessages<bool>.RemoveListener(Messages.PAUSE, IsPause);
+    void OnEnable() => BroadcastMessages<bool>.AddListener(MessageType.PAUSE, IsPause);
+    void OnDisable() => BroadcastMessages<bool>.RemoveListener(MessageType.PAUSE, IsPause);
 
     void IsPause(bool isPause)
     {
@@ -21,7 +21,7 @@ public class PauseWindow : MonoBehaviour
 
     public void GoOn()
     {
-        GameManager.audioManager.PlaySound(tapSound);
+        Managers.audioManager.PlaySound(tapSound);
         pauseWindow.enabled = false;
         startGame.enabled = true;
         time = 3;
@@ -35,13 +35,13 @@ public class PauseWindow : MonoBehaviour
             yield return new WaitForSecondsRealtime(1);
             --time;
         }
-        BroadcastMessages<bool>.SendMessage(Messages.PAUSE, false);
+        BroadcastMessages<bool>.SendMessage(MessageType.PAUSE, false);
     }
     public void MainMenu()
     {
-        GameManager.audioManager.PlaySound(tapSound);
-        BroadcastMessages<bool>.SendMessage(Messages.PAUSE, false);
-        GameManager.gameManager.LoadScene(1);
+        Managers.audioManager.PlaySound(tapSound);
+        BroadcastMessages<bool>.SendMessage(MessageType.PAUSE, false);
+        Managers.gameManager.LoadScene(1);
     }
-    public void OpenSettings() => GameManager.uiManager.OpenSettings(pauseWindow);
+    public void OpenSettings() => Managers.uiManager.OpenSettings(pauseWindow);
 }

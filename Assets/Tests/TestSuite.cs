@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.Security;
 
 public class TestSuite
 {
@@ -23,11 +24,11 @@ public class TestSuite
     [UnityTest]
     public IEnumerator SetPlayScore()
     {
-        GameManager.gameManager.LoadScene(2);
+        Managers.gameManager.LoadScene(2);
 
         yield return new WaitForSeconds(1f);
 
-        EncodedData encodedData = GameManager.dataManager.GetGameData();
+        EncodedData encodedData = Managers.dataManager.GetData();
         Assert.Greater(encodedData.score, 0);
     }
 }

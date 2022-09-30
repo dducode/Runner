@@ -6,6 +6,6 @@ public class MainScene : SceneController
 {
     void Start()
     {
-        GameManager.audioManager.PlayMusic(Resources.Load("Music/" + playMusic) as AudioClip);
+        Managers.audioManager.PlayMusic(Resources.Load("Music/" + playMusic) as AudioClip);
     }
 }

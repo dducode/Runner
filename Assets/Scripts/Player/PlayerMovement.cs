@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 movedX += movedVector.x > 0 ? 2f : -2f;
                 if (movedX >= -2f && movedX <= 2f)
-                    GameManager.audioManager.PlaySound(moveSound);
+                    Managers.audioManager.PlaySound(moveSound);
                 movedX = Mathf.Clamp(movedX, -2f, 2f);
                 endTouch = false;
             }
@@ -102,13 +102,13 @@ public class PlayerMovement : MonoBehaviour
                 if (movedVector.y > 0 && _charController.isGrounded)
                 {
                     _vertSpeed = jumpSpeed;
-                    GameManager.audioManager.PlaySound(jumpSound);
+                    Managers.audioManager.PlaySound(jumpSound);
                     endTouch = false;
                 }
                 else if (movedVector.y < 0 && !_charController.isGrounded)
                 {
                     _vertSpeed = fallSpeed;
-                    GameManager.audioManager.PlaySound(moveSound);
+                    Managers.audioManager.PlaySound(moveSound);
                     endTouch = false;
                 }
             }
