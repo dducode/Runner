@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour, IManagers
     ///<param name="scene">Индекс сцены в сборке</param>
     public void LoadScene(int scene)
     {
+        Managers.uiManager.StartLoad();
         async = SceneManager.LoadSceneAsync(scene);
         StartCoroutine(LoadProgress());
         async.completed += LoadCompleted;
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour, IManagers
     {
         BroadcastMessages<bool>.SendMessage(MessageType.PAUSE, false);
         scene = SceneManager.GetActiveScene();
-        Managers.uiManager.ActiveUI(scene.buildIndex);
+        Managers.uiManager.LoadCompleted(scene.buildIndex);
         Managers.uiManager.UpdateViews();
         async.completed -= LoadCompleted;
     }

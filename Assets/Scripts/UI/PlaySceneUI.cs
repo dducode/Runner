@@ -7,12 +7,10 @@ using Assets.Scripts.Security;
 ///<summary>
 ///Класс, управляющий пользовательским интерфейсом в игровой сцене
 ///</summary>
-public class PlaySceneUI : MonoBehaviour, IUserInterface
+public class PlaySceneUI : MonoBehaviour
 {
     [SerializeField] Canvas deathWindow;
-    [SerializeField] Canvas pauseWindow;
     [SerializeField] Button pauseButton;
-    [SerializeField] AudioClip tapSound; // Звук нажатия кнопки UI
     [SerializeField] private TextMeshProUGUI score; // Набранные очки
     [SerializeField] private TextMeshProUGUI moneys; // Собранные монеты
     [SerializeField] private TextMeshProUGUI multiplier; // Множитель очков
@@ -30,18 +28,12 @@ public class PlaySceneUI : MonoBehaviour, IUserInterface
         BroadcastMessages<bool>.RemoveListener(MessageType.PAUSE, IsPause);
     }
 
-    public void StartUI()
-    {
-        pauseWindow.enabled = false;
-        deathWindow.enabled = false;
-    }
-
     void Update()
     {
         EncodedData encodedData = Managers.dataManager.GetData();
         int scoreText = (int)encodedData.score;
-        moneys.text = Managers.uiManager.StringConversion(encodedData.money.ToString());
-        score.text = Managers.uiManager.StringConversion(scoreText.ToString());
+        moneys.text = Managers.uiManager.AddSeparator(encodedData.money.ToString());
+        score.text = Managers.uiManager.AddSeparator(scoreText.ToString());
         if (encodedData.multiplierBonus > 1)
             multiplier.text = "X" + encodedData.multiplierBonus;
         else
@@ -58,17 +50,15 @@ public class PlaySceneUI : MonoBehaviour, IUserInterface
     IEnumerator AwaitDeathWindow()
     {
         yield return new WaitForSecondsRealtime(2);
-        deathWindow.enabled = true;
+        Managers.uiManager.OpenPopupWindow(deathWindow);
     }
 
     public void Pause()
     {
-        Managers.audioManager.PlaySound(tapSound);
         BroadcastMessages<bool>.SendMessage(MessageType.PAUSE, true);
     }
     public void IsPause(bool isPause)
     {
-        pauseWindow.enabled = isPause;
         pauseButton.interactable = !isPause;
     }
 }

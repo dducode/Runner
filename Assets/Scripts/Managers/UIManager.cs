@@ -17,20 +17,15 @@ public class UIManager : MonoBehaviour, IManagers
     [SerializeField] TextMeshProUGUI loadText;
     [SerializeField] Slider loadBar;
     [SerializeField] AudioClip tapSound;
-    int buildIndex;
-    Canvas otherWindow;
+    Stack<Canvas> windows;
 
     public void StartManager()
     {
-        List<Canvas> UIs = new List<Canvas>();
-        UIs.Add(mainSceneUI);
-        UIs.Add(playSceneUI);
-        UIs.Add(loadWindow);
-        UIs.Add(settingsWindow);
-
+        windows = new Stack<Canvas>();
+        Canvas[] UIs = GetComponentsInChildren<Canvas>();
         foreach (Canvas ui in UIs)
         {
-            ui.gameObject.GetComponent<IUserInterface>()?.StartUI();
+            ui.GetComponent<IUserInterface>()?.StartUI();
             ui.enabled = false;
         }
     }
@@ -40,44 +35,74 @@ public class UIManager : MonoBehaviour, IManagers
     ///</summary>
     public void UpdateViews() => mainSceneUI.GetComponent<MainSceneUI>().UpdateViews();
 
-    public string StringConversion(string target)
+    ///<summary>
+    ///Добавляет разделитель между числовыми классами
+    ///</summary>
+    public string AddSeparator(string target, char separator = ' ')
     {
         List<char> symbols = new List<char>();
         symbols.AddRange(target);
         int initialCount = symbols.Count;
         for (int i = initialCount - 3; i > 0; i -= 3)
-            symbols.Insert(i, ' ');
+            symbols.Insert(i, separator);
         return String.Join<char>(null, symbols);
     }
 
-    public void ActiveUI(int index)
-    {
-        buildIndex = index;
-        loadWindow.enabled = false;
-        mainSceneUI.enabled = buildIndex is 1;
-        playSceneUI.enabled = buildIndex > 1;
-    }
-
-    public void OpenSettings(Canvas _otherWindow)
-    {
-        otherWindow = _otherWindow;
-        OpenSettings(true);
-    }
-
-    public void OpenSettings(bool isOpen)
+    ///<summary>
+    ///Используется для открытия окна пользователем из UI
+    ///</summary>
+    public void OpenWindow(Canvas window)
     {
         Managers.audioManager.PlaySound(tapSound);
-        settingsWindow.enabled = isOpen;
-        otherWindow.enabled = !isOpen;
+        Canvas w = null;
+        windows.TryPeek(out w);
+        if (w != null) w.enabled = false;
+
+        windows.Push(window);
+        window.enabled = true;
+    }
+    ///<summary>
+    ///Используется для открытия всплывающего окна из скрипта
+    ///</summary>
+    public void OpenPopupWindow(Canvas window)
+    {
+        Canvas w = null;
+        windows.TryPeek(out w);
+        if (w != null) w.enabled = false;
+
+        windows.Push(window);
+        window.enabled = true;
+    }
+    ///<summary>
+    ///Используется для закрытия текущего окна
+    ///</summary>
+    public void CloseWindow()
+    {
+        Managers.audioManager.PlaySound(tapSound);
+        Canvas window = windows.Pop();
+        window.enabled = false;
+
+        Canvas w = null;
+        windows.TryPeek(out w);
+        if (w != null) w.enabled = true;
     }
 
-    public void LoadScene(float progress)
+    public void StartLoad()
     {
         loadWindow.enabled = true;
         mainSceneUI.enabled = false;
         playSceneUI.enabled = false;
+    }
+    public void LoadScene(float progress)
+    {
         loadBar.value = progress;
         float percentages = progress * 100f;
         loadText.text = "Loading: " + (int)percentages + "%";
+    }
+    public void LoadCompleted(int sceneIndex)
+    {
+        loadWindow.enabled = false;
+        mainSceneUI.enabled = sceneIndex is 1;
+        playSceneUI.enabled = sceneIndex > 1;
     }
 }

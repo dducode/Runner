@@ -12,10 +12,10 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
 {
     [SerializeField] Canvas buyHealthWindow; // Окно покупки здоровья
     [SerializeField] Canvas helpWindow; // Окно навигации по игре
-    [SerializeField] GameObject tournamentTable; // Таблица еженедельного турнира
+    [SerializeField] Canvas tournamentTable; // Таблица еженедельного турнира
     [SerializeField] TextMeshProUGUI bestScore;
-    [SerializeField] GameObject health; // Отображение здоровья
-    [SerializeField] GameObject moneys; // Отображение валюты
+    [SerializeField] RectTransform health; // Отображение здоровья
+    [SerializeField] RectTransform moneys; // Отображение валюты
     [SerializeField] AudioClip tapSound; // Звук нажатия кнопки UI
     [SerializeField] List<Button> buyButtons; // Кнопки покупки здоровья
     [SerializeField] Button startGame; // Кнопка старта игры
@@ -28,13 +28,10 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
     public void StartUI()
     {
         nickname.gameObject.SetActive(false);
-        tournamentTable.SetActive(false);
-        buyHealthWindow.enabled = false;
-        helpWindow.enabled = false;
         mainWindow = GetComponent<Canvas>();
         healthText = health.GetComponentInChildren<TextMeshProUGUI>();
         moneysText = moneys.GetComponentInChildren<TextMeshProUGUI>();
-        table = tournamentTable.GetComponent<TournamentTable>();
+        table = tournamentTable.GetComponentInChildren<TournamentTable>();
         EncodedData encodedData = Managers.dataManager.GetData();
         if (encodedData.nickname == "")
         {
@@ -61,11 +58,11 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
         EncodedData encodedData = Managers.dataManager.GetData();
         int score = (int)encodedData.bestScore;
         healthText.text = 
-            Managers.uiManager.StringConversion(encodedData.health.ToString());
+            Managers.uiManager.AddSeparator(encodedData.health.ToString());
         bestScore.text = 
-            "Best Score: " + Managers.uiManager.StringConversion(score.ToString());
+            "Best Score: " + Managers.uiManager.AddSeparator(score.ToString());
         moneysText.text = 
-            Managers.uiManager.StringConversion(encodedData.money.ToString());
+            Managers.uiManager.AddSeparator(encodedData.money.ToString());
         table.UpdatePlayerScore();
     }
 
@@ -76,11 +73,8 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
     }
     public void BuyHealth()
     {
-        Managers.audioManager.PlaySound(tapSound);
-        buyHealthWindow.enabled = true;
-        mainWindow.enabled = false;
-        health.transform.SetParent(buyHealthWindow.transform);
-        moneys.transform.SetParent(buyHealthWindow.transform);
+        health.SetParent(buyHealthWindow.transform);
+        moneys.SetParent(buyHealthWindow.transform);
         EncodedData encodedData = Managers.dataManager.GetData();
         foreach (Button buyButton in buyButtons)
         {
@@ -90,32 +84,11 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
             buyButton.interactable = encodedData.money > cost;
         }
     }
-    public void Help()
-    {
-        Managers.audioManager.PlaySound(tapSound);
-        helpWindow.enabled = true;
-        mainWindow.enabled = false;
-    }
-    public void OpenTable()
-    {
-        Managers.audioManager.PlaySound(tapSound);
-        tournamentTable.SetActive(!tournamentTable.activeSelf);
-    }
     public void CloseBuyWindow()
     {
-        Managers.audioManager.PlaySound(tapSound);
-        buyHealthWindow.enabled = false;
-        mainWindow.enabled = true;
-        health.transform.SetParent(transform);
-        moneys.transform.SetParent(transform);
+        health.SetParent(transform);
+        moneys.SetParent(transform);
     }
-    public void CloseHelpWindow()
-    {
-        Managers.audioManager.PlaySound(tapSound);
-        helpWindow.enabled = false;
-        mainWindow.enabled = true;
-    }
-    public void OpenSettings() => Managers.uiManager.OpenSettings(mainWindow);
 
     public void HealthAdd(int healthes)
     {
