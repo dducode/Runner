@@ -56,7 +56,7 @@ public class TournamentTable : MonoBehaviour
 
         UpdateTable();
 
-        PlayerPrefs.SetInt("LastDay", lastDay);
+        PlayerPrefs.SetInt("LastDay", Convert.ToInt32(DateTime.Today.DayOfWeek));
         PlayerPrefs.Save();
     }
 

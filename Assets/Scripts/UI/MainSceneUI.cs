@@ -47,7 +47,7 @@ public class MainSceneUI : MonoBehaviour, IUserInterface
     {
         EncodedData encodedData = Managers.dataManager.GetData();
         encodedData.nickname = nickname.textComponent.text;
-        Managers.dataManager.SetData(encodedData);
+        Managers.dataManager.SetData(encodedData, true);
         table.AddPlayerInTable(encodedData.nickname);
         nickname.gameObject.SetActive(false);
         startGame.interactable = true;
