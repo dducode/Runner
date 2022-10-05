@@ -6,6 +6,7 @@ using System.Data;
 using System.Runtime;
 using TMPro;
 using Assets.Scripts.Security;
+using UnityRandom = UnityEngine.Random;
 
 public class TournamentTable : MonoBehaviour
 {
@@ -105,7 +106,7 @@ public class TournamentTable : MonoBehaviour
             DataTable table = Managers.databaseManager.GetTable("SELECT * FROM Players ORDER BY id_player");
             for (int j = 0; j < table.Rows.Count; j++)
             {
-                int score = UnityEngine.Random.Range(0, 1000000);
+                int score = UnityRandom.Range(0, 1000000);
                 if (encodedData.nickname == table.Rows[j][1].ToString())
                     continue;
                 else if (score > Convert.ToInt32(table.Rows[j][2]))

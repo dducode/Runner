@@ -14158,7 +14158,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1538651311}
+        m_TargetAssemblyTypeName: SettingsWindow, GameAssembly
+        m_MethodName: SetMusicSettings
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!224 &1112286951
 RectTransform:
@@ -14342,7 +14354,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1815813286}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.34816927
+  m_Size: 0.3481693
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16346,7 +16358,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1538651311}
+        m_TargetAssemblyTypeName: SettingsWindow, GameAssembly
+        m_MethodName: SetSoundSettings
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!224 &1309948612
 RectTransform:
@@ -19690,6 +19714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 1309948611}
   music: {fileID: 1112286950}
+  vibrate: {fileID: 0}
   quality: {fileID: 1749529312}
   tapSound: {fileID: 8300000, guid: 18396a842a9d44043b6126bab2e7fd1d, type: 3}
 --- !u!114 &1538651312
@@ -25206,8 +25231,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 252, y: -287}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: 252, y: -281.46585}
+  m_SizeDelta: {x: 400, y: 388.9317}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1999746710
 MonoBehaviour:
@@ -25282,6 +25307,7 @@ MonoBehaviour:
   defaultSettings:
     sound: 1
     music: 0
+    vibrate: 1
     quality: 1
 --- !u!1 &2016286296
 GameObject:

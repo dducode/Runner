@@ -8,6 +8,13 @@ namespace Assets.Scripts.Settings
         public bool sound;
         public bool music;
         public Quality quality;
+
+        public GameSettings(bool _sound, bool _music, Quality _quality)
+        {
+            sound = _sound;
+            music = _music;
+            quality = _quality;
+        }
     }
     public enum Quality
     {

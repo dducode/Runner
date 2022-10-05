@@ -8,23 +8,27 @@ public class AudioManager : MonoBehaviour, IManagers
 
     public void StartManager()
     {
-        GameSettings gameSettings = Managers.settingsManager.gameSettings;
-        soundSource.mute = !gameSettings.sound;
-        musicSource.mute = !gameSettings.music;
+        SetSourcesSettings();
     }
 
-    public void PlaySound(AudioClip clip) => soundSource.PlayOneShot(clip);
+    public void PlaySound(AudioClip clip)
+    {
+        SetSourcesSettings();
+        soundSource.PlayOneShot(clip);
+    }
 
     public void PlayMusic(AudioClip clip)
     {
+        SetSourcesSettings();
         musicSource.clip = clip;
         musicSource.Play();
         Resources.UnloadUnusedAssets();
     }
 
-    public void SetSettings(GameSettings _gameSettigs)
+    void SetSourcesSettings()
     {
-        soundSource.mute = !_gameSettigs.sound;
-        musicSource.mute = !_gameSettigs.music;
+        GameSettings gameSettings = Managers.settingsManager.gameSettings;
+        soundSource.mute = !gameSettings.sound;
+        musicSource.mute = !gameSettings.music;
     }
 }

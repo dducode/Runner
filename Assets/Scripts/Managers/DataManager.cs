@@ -19,14 +19,6 @@ public class DataManager : MonoBehaviour, IManagers
         Application.quitting += SaveData;
     }
 
-    void OnEnable() => BroadcastMessages<bool>.AddListener(MessageType.PAUSE, OnPause);
-    void OnDisable() => BroadcastMessages<bool>.RemoveListener(MessageType.PAUSE, OnPause);
-
-    void OnPause(bool isPause)
-    {
-        if (isPause) SaveData();
-    }
-
     ///<summary>
     ///Обновляет данные игрока
     ///</summary>

@@ -12,21 +12,21 @@ public class GameSettingsManager : MonoBehaviour, IManagers
     [SerializeField] GameSettings defaultSettings;
     public GameSettings gameSettings { get; private set; }
     public GameSettings DefaultSettings { get { return defaultSettings; } }
-    float[][] screenResolution;
+    int[][] screenResolution;
 
     public void StartManager()
     {
         LoadSettings();
         Application.quitting += SaveSettings;
-        screenResolution = new float[][] {
-            new float[] { Screen.currentResolution.width * 0.6f, Screen.currentResolution.height * 0.6f },
-            new float[] { Screen.currentResolution.width * 0.8f, Screen.currentResolution.height * 0.8f },
-            new float[] { Screen.currentResolution.width * 1f, Screen.currentResolution.height * 1f },
+        screenResolution = new int[][] {
+            new int[] { (int)(Screen.currentResolution.width * 0.6f), (int)(Screen.currentResolution.height * 0.6f) },
+            new int[] { (int)(Screen.currentResolution.width * 0.8f), (int)(Screen.currentResolution.height * 0.8f) },
+            new int[] { Screen.currentResolution.width, Screen.currentResolution.height },
         };
         QualitySettings.SetQualityLevel((int)gameSettings.quality);
         Screen.SetResolution(
-            (int)screenResolution[(int)gameSettings.quality][0],
-            (int)screenResolution[(int)gameSettings.quality][1], true);
+            screenResolution[(int)gameSettings.quality][0],
+            screenResolution[(int)gameSettings.quality][1], true);
     }
 
     void OnEnable() => BroadcastMessages<bool>.AddListener(MessageType.PAUSE, OnPause);
@@ -44,40 +44,29 @@ public class GameSettingsManager : MonoBehaviour, IManagers
     {
         gameSettings = _gameSettings;
         QualitySettings.SetQualityLevel((int)gameSettings.quality);
-        int width = (int)screenResolution[(int)gameSettings.quality][0];
-        int height = (int)screenResolution[(int)gameSettings.quality][1];
+
+        int width = screenResolution[(int)gameSettings.quality][0];
+        int height = screenResolution[(int)gameSettings.quality][1];
         Screen.SetResolution(
-            (int)screenResolution[(int)gameSettings.quality][0],
-            (int)screenResolution[(int)gameSettings.quality][1], true);
-        Managers.audioManager.SetSettings(gameSettings);
+            screenResolution[(int)gameSettings.quality][0],
+            screenResolution[(int)gameSettings.quality][1], true);
     }
 
     void LoadSettings()
     {
         //загружаем настройки пользователя
-        int savedSound, savedMusic;
-        Quality quality;
-
-        savedSound = PlayerPrefs.GetInt("Sound", Convert.ToInt32(defaultSettings.sound));
-        savedMusic = PlayerPrefs.GetInt("Music", Convert.ToInt32(defaultSettings.music));
-        quality = (Quality)PlayerPrefs.GetInt("Quality", Convert.ToInt32(defaultSettings.quality));
-
-        GameSettings _gameSettings;
-        _gameSettings.sound = Convert.ToBoolean(savedSound);
-        _gameSettings.music = Convert.ToBoolean(savedMusic);
-        _gameSettings.quality = quality;
-        gameSettings = _gameSettings;
+        gameSettings = new GameSettings(
+            Convert.ToBoolean(PlayerPrefs.GetInt("Sound", Convert.ToInt32(defaultSettings.sound))), 
+            Convert.ToBoolean(PlayerPrefs.GetInt("Music", Convert.ToInt32(defaultSettings.music))),
+            (Quality)PlayerPrefs.GetInt("Quality", Convert.ToInt32(defaultSettings.quality))
+        );
     }
     void SaveSettings()
     {
         // сохраняем настройки пользователя
-        int savedSound = Convert.ToInt32(gameSettings.sound);
-        int savedMusic = Convert.ToInt32(gameSettings.music);
-        int savedQuality = Convert.ToInt32(gameSettings.quality);
-
-        PlayerPrefs.SetInt("Sound", savedSound);
-        PlayerPrefs.SetInt("Music", savedMusic);
-        PlayerPrefs.SetInt("Quality", savedQuality);
+        PlayerPrefs.SetInt("Sound", Convert.ToInt32(gameSettings.sound));
+        PlayerPrefs.SetInt("Music", Convert.ToInt32(gameSettings.music));
+        PlayerPrefs.SetInt("Quality", Convert.ToInt32(gameSettings.quality));
         PlayerPrefs.Save();
     }
 }

@@ -15,21 +15,20 @@ public class SettingsWindow : MonoBehaviour, IUserInterface
         sound.isOn = gameSettings.sound;
         music.isOn = gameSettings.music;
         quality.value = (float)gameSettings.quality;
-        sound.onValueChanged.AddListener(delegate { SetMuteSettings(); });
-        music.onValueChanged.AddListener(delegate { SetMuteSettings(); });
     }
 
-    void OnDestroy()
-    {
-        sound.onValueChanged.RemoveAllListeners();
-        music.onValueChanged.RemoveAllListeners();
-    }
-
-    void SetMuteSettings()
+    public void SetMusicSettings(bool value)
     {
         GameSettings gameSettings = Managers.settingsManager.gameSettings;
-        gameSettings.sound = sound.isOn;
-        gameSettings.music = music.isOn;
+        gameSettings.music = value;
+        Managers.settingsManager.SetSettings(gameSettings);
+        Managers.audioManager.PlaySound(tapSound);
+    }
+
+    public void SetSoundSettings(bool value)
+    {
+        GameSettings gameSettings = Managers.settingsManager.gameSettings;
+        gameSettings.sound = value;
         Managers.settingsManager.SetSettings(gameSettings);
         Managers.audioManager.PlaySound(tapSound);
     }
