@@ -21,7 +21,7 @@ public class PlayerData : MonoBehaviour
         encodedData.score = 0f;
         encodedData.revivalCost = 1;
         encodedData.multiplierBonus = 1;
-        Managers.dataManager.SetData(encodedData);
+        Managers.dataManager.SetData(encodedData, false);
     }
     void OnDisable()
     {
@@ -37,7 +37,7 @@ public class PlayerData : MonoBehaviour
         EncodedData encodedData = Managers.dataManager.GetData();
         encodedData.score += playerSpeed * Time.deltaTime * 10f * encodedData.multiplierBonus;
         int score = (int)encodedData.score;
-        Managers.dataManager.SetData(encodedData);
+        Managers.dataManager.SetData(encodedData, false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -60,13 +60,13 @@ public class PlayerData : MonoBehaviour
             encodedData.multiplierBonus = bonusValue;
             timer.AddListener(10f, ResetMultiplier);
         }
-        Managers.dataManager.SetData(encodedData);
+        Managers.dataManager.SetData(encodedData, false);
     }
     void ResetMultiplier()
     {
         EncodedData encodedData = Managers.dataManager.GetData();
         encodedData.multiplierBonus = 1;
-        Managers.dataManager.SetData(encodedData);
+        Managers.dataManager.SetData(encodedData, false);
     }
 
     public void Restart()
@@ -78,6 +78,6 @@ public class PlayerData : MonoBehaviour
             encodedData.revivalCost += revivalCostLast;
             revivalCostLast = revivalCostTemp;
         }
-        Managers.dataManager.SetData(encodedData);
+        Managers.dataManager.SetData(encodedData, false);
     }
 }

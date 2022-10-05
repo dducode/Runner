@@ -7,13 +7,15 @@ using Assets.Scripts.Security;
 ///<summary>
 ///Класс, управляющий пользовательским интерфейсом в игровой сцене
 ///</summary>
-public class PlaySceneUI : MonoBehaviour
+public class PlaySceneUI : MonoBehaviour, IUserInterface
 {
     [SerializeField] Canvas deathWindow;
     [SerializeField] Button pauseButton;
     [SerializeField] private TextMeshProUGUI score; // Набранные очки
     [SerializeField] private TextMeshProUGUI moneys; // Собранные монеты
     [SerializeField] private TextMeshProUGUI multiplier; // Множитель очков
+
+    public void StartUI() => pauseButton.enabled = true;
 
     void OnEnable()
     {
@@ -37,7 +39,7 @@ public class PlaySceneUI : MonoBehaviour
         if (encodedData.multiplierBonus > 1)
             multiplier.text = "X" + encodedData.multiplierBonus;
         else
-            multiplier.text = "";
+            multiplier.text = string.Empty;
     }
 
     public void Death()

@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour, IManagers
         int initialCount = symbols.Count;
         for (int i = initialCount - 3; i > 0; i -= 3)
             symbols.Insert(i, separator);
-        return String.Join<char>(null, symbols);
+        return String.Concat(symbols);
     }
 
     ///<summary>

@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviour, IManagers
     ///Обновляет данные игрока
     ///</summary>
     ///<param name="serialize">Указывает, должны ли данные сохраняться на диск</param>
-    public void SetData(EncodedData encodedData, bool serialize = false)
+    public void SetData(EncodedData encodedData, bool serialize)
     {
         jsonData = JsonUtility.ToJson(encodedData);
         jsonData = B64X.Encode(jsonData);
