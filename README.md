@@ -3,7 +3,7 @@
 
 ![a](Assets/Icons/icon.png)
 
-[Runner Demo (.apk file)](https://drive.google.com/drive/folders/1dwZE-FzEZFK_5DWuO4rqVQcMVAV-Mb34?usp=sharing)
+[Runner Demo (.apk file)](https://github.com/DIDenis/Runner/releases/download/v1.1.0/runner.apk)
 </h2>
 
 # Содержание

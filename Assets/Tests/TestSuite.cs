@@ -69,7 +69,6 @@ public class TestSuite
         yield return new WaitForFixedUpdate();
 
         EncodedData encodedData = Managers.dataManager.GetData();
-        bool condition = encodedData.multiplierBonus is 2;
-        Assert.IsTrue(condition);
+        Assert.IsTrue(encodedData.multiplierBonus is 2);
     }
 }
