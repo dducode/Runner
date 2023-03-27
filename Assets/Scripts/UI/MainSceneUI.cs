@@ -2,109 +2,152 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using System;
-using Assets.Scripts.Security;
+
+
 
 ///<summary>
 ///Класс, управляющий пользовательским интерфейсом в главной сцене
 ///</summary>
-public class MainSceneUI : MonoBehaviour, IUserInterface
-{
-    [SerializeField] Canvas buyHealthWindow; // Окно покупки здоровья
-    [SerializeField] Canvas helpWindow; // Окно навигации по игре
-    [SerializeField] Canvas tournamentTable; // Таблица еженедельного турнира
-    [SerializeField] TextMeshProUGUI bestScore;
-    [SerializeField] RectTransform health; // Отображение здоровья
-    [SerializeField] RectTransform moneys; // Отображение валюты
-    [SerializeField] AudioClip tapSound; // Звук нажатия кнопки UI
-    [SerializeField] List<Button> buyButtons; // Кнопки покупки здоровья
-    [SerializeField] Button startGame; // Кнопка старта игры
-    [SerializeField] TMP_InputField nickname; // Поле ввода никнейма игрока
-    TournamentTable table;
-    TextMeshProUGUI healthText;
-    TextMeshProUGUI moneysText;
-    Canvas mainWindow;
+[RequireComponent(typeof(Canvas))]
+public class MainSceneUI : MonoBehaviour, IUserInterface {
 
-    public void StartUI()
-    {
+    [SerializeField]
+    private Canvas buyHealthWindow; // Окно покупки здоровья
+
+    [SerializeField]
+    private Canvas helpWindow; // Окно навигации по игре
+
+    [SerializeField]
+    private Canvas tournamentTable; // Таблица еженедельного турнира
+
+    [SerializeField]
+    private TextMeshProUGUI bestScore;
+
+    [SerializeField]
+    private RectTransform health; // Отображение здоровья
+
+    [SerializeField]
+    private RectTransform moneys; // Отображение валюты
+
+    [SerializeField]
+    private AudioClip tapSound; // Звук нажатия кнопки UI
+
+    [SerializeField]
+    private List<Button> buyButtons; // Кнопки покупки здоровья
+
+    [SerializeField]
+    private Button startGame; // Кнопка старта игры
+
+    [SerializeField]
+    private TMP_InputField nickname; // Поле ввода никнейма игрока
+
+    [SerializeField]
+    private Canvas warning;
+
+    private TournamentTable m_table;
+    private TextMeshProUGUI m_healthText;
+    private TextMeshProUGUI m_moneysText;
+
+
+    public void StartUI () {
         nickname.gameObject.SetActive(false);
-        mainWindow = GetComponent<Canvas>();
-        healthText = health.GetComponentInChildren<TextMeshProUGUI>();
-        moneysText = moneys.GetComponentInChildren<TextMeshProUGUI>();
-        table = tournamentTable.GetComponentInChildren<TournamentTable>();
-        EncodedData encodedData = Managers.dataManager.GetData();
-        if (encodedData.nickname == "")
-        {
+        GetComponent<Canvas>();
+        m_healthText = health.GetComponentInChildren<TextMeshProUGUI>();
+        m_moneysText = moneys.GetComponentInChildren<TextMeshProUGUI>();
+        m_table = tournamentTable.GetComponentInChildren<TournamentTable>();
+        var encodedData = Managers.dataManager.GetData();
+
+        if (encodedData.nickname == "") {
             nickname.gameObject.SetActive(true);
             startGame.interactable = false;
         }
         else
-            table.InitializeTable();
+            m_table.InitializeTable();
+
         UpdateViews();
     }
 
-    public void WriteNick()
-    {
-        EncodedData encodedData = Managers.dataManager.GetData();
+
+    public void WriteNick () {
+        if (nickname.textComponent.text.Length < 3) {
+            ShowWarning();
+            return;
+        }
+
+        var encodedData = Managers.dataManager.GetData();
         encodedData.nickname = nickname.textComponent.text;
         Managers.dataManager.SetData(encodedData, true);
-        table.AddPlayerInTable(encodedData.nickname);
+        m_table.AddPlayerInTable(encodedData.nickname);
         nickname.gameObject.SetActive(false);
         startGame.interactable = true;
     }
 
-    public void UpdateViews()
-    {
-        EncodedData encodedData = Managers.dataManager.GetData();
-        int score = (int)encodedData.bestScore;
-        healthText.text = 
+
+    public void UpdateViews () {
+        var encodedData = Managers.dataManager.GetData();
+        var score = (int) encodedData.bestScore;
+        m_healthText.text =
             Managers.uiManager.AddSeparator(encodedData.health.ToString());
-        bestScore.text = 
+        bestScore.text =
             "Best Score: " + Managers.uiManager.AddSeparator(score.ToString());
-        moneysText.text = 
+        m_moneysText.text =
             Managers.uiManager.AddSeparator(encodedData.money.ToString());
-        table.UpdatePlayerScore();
+        m_table.UpdatePlayerScore();
     }
 
-    public void StartGame()
-    {
+
+    public void StartGame () {
         Managers.audioManager.PlaySound(tapSound);
         Managers.gameManager.LoadScene(2);
     }
-    public void BuyHealth()
-    {
+
+
+    public void BuyHealth () {
         health.SetParent(buyHealthWindow.transform);
         moneys.SetParent(buyHealthWindow.transform);
-        EncodedData encodedData = Managers.dataManager.GetData();
-        foreach (Button buyButton in buyButtons)
-        {
-            TextMeshProUGUI amount = buyButton.GetComponentInChildren<TextMeshProUGUI>();
-            int cost = Int32.Parse(amount.text);
+        var encodedData = Managers.dataManager.GetData();
+
+        foreach (var buyButton in buyButtons) {
+            var amount = buyButton.GetComponentInChildren<TextMeshProUGUI>();
+            var cost = int.Parse(amount.text);
             cost *= 100;
             buyButton.interactable = encodedData.money > cost;
         }
     }
-    public void CloseBuyWindow()
-    {
+
+
+    public void CloseBuyWindow () {
         health.SetParent(transform);
         moneys.SetParent(transform);
     }
 
-    public void HealthAdd(int healthes)
-    {
+
+    public void HealthAdd (int healthes) {
         Managers.audioManager.PlaySound(tapSound);
-        EncodedData encodedData = Managers.dataManager.GetData();
-        int cost = healthes * 100;
-        encodedData.health = encodedData.health + healthes;
-        encodedData.money = encodedData.money - cost;
-        foreach (Button buyButton in buyButtons)
-        {
-            TextMeshProUGUI amount = buyButton.GetComponentInChildren<TextMeshProUGUI>();
-            int price = Int32.Parse(amount.text);
+        var encodedData = Managers.dataManager.GetData();
+        var cost = healthes * 100;
+        encodedData.health += healthes;
+        encodedData.money -= cost;
+
+        foreach (var buyButton in buyButtons) {
+            var amount = buyButton.GetComponentInChildren<TextMeshProUGUI>();
+            var price = int.Parse(amount.text);
             price *= 100;
             buyButton.interactable = encodedData.money >= price;
         }
+
         Managers.dataManager.SetData(encodedData, true);
         UpdateViews();
     }
+
+
+    public void HideWarning () {
+        warning.enabled = false;
+    }
+
+
+    private void ShowWarning () {
+        warning.enabled = true;
+    }
+
 }

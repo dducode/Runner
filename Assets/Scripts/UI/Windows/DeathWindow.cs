@@ -15,7 +15,7 @@ public class DeathWindow : MonoBehaviour
     void Death()
     {
         EncodedData encodedData = Managers.dataManager.GetData();
-        restartButton.interactable = encodedData.health > encodedData.revivalCost;
+        restartButton.interactable = encodedData.health >= encodedData.revivalCost;
         health.text = encodedData.revivalCost.ToString();
     }
 
