@@ -23,7 +23,7 @@ public class DatabaseManager : MonoBehaviour, IManagers
     {
 #if UNITY_EDITOR
         return "Assets/DataBase/dbEditor.bytes";
-#elif UNITY_ANDROID
+#elif UNITY_ANDROID || UNITY_WEBGL
         string filePath = Path.Combine(Application.persistentDataPath, fileName);
         if(!File.Exists(filePath)) UnpackDatabase(filePath);
         return filePath;
